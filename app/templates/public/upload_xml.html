@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block title %}Upload{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Upload an xml</h1>
+      <hr>
+
+      <form action="/upload-xml" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Select xml</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="file" id="file">
+            <label class="custom-file-label" for="file">Select xml...</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+2)To kill and quit the wsgi:# ps ax|grep uwsgi
+                            # kill -s QUIT <pidid>
+
+3) TO kill and reload the uwsgi server: kill `pidof uwsgi` or: killall uwsgi

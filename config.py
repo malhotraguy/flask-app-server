@@ -3,9 +3,10 @@ class Config:
     Use this class to share any default attributes with any subsequent
     classes that inherit from Config.
     """
+
     DEBUG = False
     TESTING = False
-    
+
     # Only required when using the session object
     # Generated with secrets.token_urlsafe(16)
     # You could also use os.urandom(16)
@@ -18,6 +19,7 @@ class ProductionConfig(Config):
     Use this class to define production configuration atrributes, such
     as database usernames, passwords, server specific files & directories etc.
     """
+
     pass
 
 
@@ -27,4 +29,5 @@ class DevelopmentConfig(Config):
     Use this class to define development configuration atrributes, such
     as local database usernames, passwords, local specific files & directories etc.
     """
+
     DEBUG = True
