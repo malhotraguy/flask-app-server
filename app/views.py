@@ -1,12 +1,14 @@
 import os
 
-from flask import request, render_template, redirect
+
+from flask import request, render_template, redirect, abort, flash, url_for
 from flask_cors import CORS
 
 from app import app
+from app import xml_operations
 
 CORS(app)
-app.config["XML_UPLOADS"] = "./output"
+app.config['XML_UPLOADS'] = "./output"
 app.config["ALLOWED_FILE_EXTENSIONS"] = ["XML"]
 
 
@@ -28,8 +30,8 @@ def homepage():
 
 
 @app.route("/xml-file/<file_name>", methods=["GET"])
-def xml(file_name):
-    with open(f'{app.config["XML_UPLOADS"]}/{file_name}') as file:
+def xml_display(file_name):
+    with open(f"{app.config['XML_UPLOADS']}/{file_name}") as file:
         content = file.read()
     return content
 
@@ -45,20 +47,23 @@ def upload_image():
 
             if file.filename == "":
                 print("No Filename")
-                return "No Filename", 400
+                # return "No Filename", 400
+                abort(400)
             if allowed_file(file.filename):
 
                 print(file)
-                if not os.path.isdir("./output"):
-                    os.mkdir(app.config["XML_UPLOADS"], mode=0o777)
-                file.save(f'{app.config["XML_UPLOADS"]}/{file.filename}')
+                if not os.path.isdir(app.config['XML_UPLOADS']):
+                    os.mkdir(app.config['XML_UPLOADS'], mode=0o777)
+                ip_visitor = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+                print(f"IP Address of the Visitor:{ip_visitor}")
+                file.save(f"{app.config['XML_UPLOADS']}/{file.filename}")
+                flash(message="File Uploaded successfully")
+                xml_operations.xml_validate(f"{app.config['XML_UPLOADS']}/{file.filename}")
                 print(
                     f"size of received  file in Kb=",
-                    os.path.getsize(f'{app.config["XML_UPLOADS"]}/{file.filename}'),
+                    os.path.getsize(f"{app.config['XML_UPLOADS']}/{file.filename}"),
                 )
-
-                return redirect(request.url), 200
-                # return '', 200
+                return redirect(location=request.url, code=302)
             else:
                 print("That file extension is not allowed")
                 return "That file extension is not allowed", 400
@@ -77,13 +82,17 @@ def string():
     If a query string comes into the URL, it will return a parsed
     dictionary of the query string keys & values, using request.args
     """
-    if os.path.isdir("./output"):
-        lis = os.listdir("./output")
-        if len(lis) > 0:
+    if os.path.isdir(app.config['XML_UPLOADS']):
+        directory_list = os.listdir(app.config['XML_UPLOADS'])
+        if len(directory_list) > 0:
             lis_dict = {
-                file_name: os.path.getsize(f"./output/{file_name}") / 1000
-                for file_name in lis
+                file_name: [xml_operations.get_size(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
+                            f'http://{request.host}{url_for(endpoint="xml_display", file_name=file_name)}',
+                            xml_operations.get_mod_date(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
+                            xml_operations.get_links_count(file_path=f"{app.config['XML_UPLOADS']}/{file_name}")]
+                for file_name in directory_list
             }
+            print(lis_dict)
             args = lis_dict
 
             return render_template("public/index.html", args=args)

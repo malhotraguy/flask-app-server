@@ -26,8 +26,11 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">FileName</th>
-                    <th scope="col">FileSize in Kbs</th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">File Size in Kbs</th>
+                    <th scope="col">Url</th>
+                    <th scope="col">Last modified</th>
+                    <th scope="col"># of links</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,7 +38,10 @@
                 <tr>
                     <th scope="row">{{ loop.index }}</th>
                     <td>{{ k }}</td>
-                    <td>{{ v }}</td>
+                    <td>{{ v[0] }}</td>
+                    <td><a href= "{{ v[1] }}">{{ v[1] }}</a></td>
+                    <td>{{ v[2] }}</td>
+                    <td>{{ v[3] }}</td>
                 </tr>
                 {% endfor %}
                 </tbody>

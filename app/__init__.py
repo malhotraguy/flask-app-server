@@ -14,4 +14,4 @@ else:
 
     app.config.from_object("config.ProductionConfig")
 
-from app import views
+from app import views ,xml_operations

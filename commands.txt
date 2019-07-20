@@ -1,3 +1,24 @@
+## In Production##
+Updating your app
+In this scenario, the best way to make changes to your application:
+
+Make changes and test locally
+Push the changes to your remote Github repo
+Pull the changes from your virtual machine
+To pull any changes to you've made to your application, make sure you're in the app parent directory:
+
+cd ~/app
+Pull the repo with the following command:
+
+git pull
+Every time you pull any changes from your remote repo, you'll need to restart the app service with:
+
+sudo systemctl restart app
+If you make any changes to the Nginx sites-enabled file, you'll need to restart Nginx with:
+
+sudo systemctl restart nginx
+
+1)once you've had some fun with the application, stop uwsgi with Ctrl + c
 2)To kill and quit the wsgi:# ps ax|grep uwsgi
                             # kill -s QUIT <pidid>
 
