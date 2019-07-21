@@ -61,7 +61,7 @@ def upload_image():
             if file.filename == "":
                 print("No Filename")
                 flash(message="No File Selected",category="error")
-                return redirect(location=request.url, code=302)
+                return redirect(location=request.url, code=302),400
             if allowed_file(file.filename):
 
                 print(file)
@@ -73,14 +73,12 @@ def upload_image():
                 data[file.filename]=ip_visitor
                 write_json(data=data)
                 file.save(f"{app.config['XML_UPLOADS']}/{file.filename}")
-
-                flash(message="File Uploaded successfully",category="info")
                 xml_operations.xml_validate(f"{app.config['XML_UPLOADS']}/{file.filename}")
+                flash(message="File Uploaded successfully",category="info")
                 return redirect(location=request.url, code=302)
             else:
                 flash(message="That file extension is not allowed",category="warning")
-                return redirect(location=request.url, code=302)
-
+                return redirect(location=request.url, code=302),400
     elif request.method == "GET":
         print("GET done")
 
@@ -105,7 +103,7 @@ def string():
                             xml_operations.get_mod_date(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
                             xml_operations.get_links_count(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
                             ip_data.get(file_name,None)]
-                for file_name in directory_list
+                 for file_name in directory_list if file_name !="uploader_record.json"
             }
             print(lis_dict)
             args = lis_dict

@@ -5,7 +5,7 @@ url="http://0.0.0.0:9090/upload-xml"
 # url='http://httpbin.org/post'
 # m = MultipartEncoder(fields={'field0': (None,open('Dummy-Blog0_rss.xml', 'rb'), 'text/xml')})
 
-m = {"file": ("", open("Dummy-Blog0_rss.xml", "rb"), "multipart/form-data")}
+m = {"file": ("Deloitte-Press releases0_rss.xml", open("/home/rahul/PycharmProjects/flask-app-server/output/Deloitte-Press releases0_rss.xml", "rb"), "multipart/form-data")}
 # m={"file":('image', <FileStorage: 'Dummy-Blog0_rss.xml' ('text/xml'))}
 # print(m.to_string() )
 r = requests.post(url, files=m)
