@@ -3,7 +3,8 @@ import time
 import xml.etree.ElementTree as ET
 from xml.sax import make_parser, SAXParseException
 from xml.sax.handler import ContentHandler
-from flask import flash,get_flashed_messages
+
+from flask import flash
 
 
 def get_links_count(file_path):
@@ -15,7 +16,6 @@ def get_links_count(file_path):
     # get root element
     root = tree.getroot()
     return len(root)
-
 
 
 def get_size(file_path):
@@ -39,12 +39,16 @@ def xml_validate(file_path):
         try:
             parsefile(file_path)
             print(f"{file_path} is well-formed xml file")
+            status_code=200
+            return status_code
         except SAXParseException as e:
-            flash(message=str(e),category="error")
+            flash(message=str(e), category="error")
             error_type = str(e).split(sep=" ", maxsplit=1)[1]
             if error_type == "syntax error":
                 os.remove(file_path)
                 print(f"File: {file_path} Removed! because it is not xml file.")
+                status_code = 400
+                return status_code
             print(f"{e}")
     else:
         print(f"{file_path} doesnt exist.")
