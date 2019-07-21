@@ -39,7 +39,7 @@ def xml_validate(file_path):
         try:
             parsefile(file_path)
             print(f"{file_path} is well-formed xml file")
-            status_code=200
+            status_code = 302
             return status_code
         except SAXParseException as e:
             flash(message=str(e), category="error")

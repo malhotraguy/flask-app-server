@@ -8,12 +8,12 @@ from app import app
 from app import xml_operations
 
 CORS(app)
-app.config['XML_UPLOADS'] = "./output"
+app.config["XML_UPLOADS"] = "./output"
 app.config["ALLOWED_FILE_EXTENSIONS"] = ["XML"]
 
 
 def write_json(data={}, filepath=f"{app.config['XML_UPLOADS']}/uploader_record.json"):
-    with open(filepath, 'w+') as outfile:
+    with open(filepath, "w+") as outfile:
         json.dump(data, outfile)
 
 
@@ -60,19 +60,23 @@ def upload_image():
             if file.filename == "":
                 print("No Filename")
                 flash(message="No File Selected", category="error")
-                return redirect(location=request.url, code=400)
+                return redirect(location=request.url, code=302)
             if allowed_file(file.filename):
 
                 print(file)
-                if not os.path.isdir(app.config['XML_UPLOADS']):
-                    os.mkdir(app.config['XML_UPLOADS'], mode=0o777)
+                if not os.path.isdir(app.config["XML_UPLOADS"]):
+                    os.mkdir(app.config["XML_UPLOADS"], mode=0o777)
 
-                ip_visitor = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-                data = get_json_data(f"{app.config['XML_UPLOADS']}/uploader_record.json")
+                ip_visitor = request.environ.get("HTTP_X_REAL_IP", request.remote_addr)
+                data = get_json_data(
+                    f"{app.config['XML_UPLOADS']}/uploader_record.json"
+                )
                 data[file.filename] = ip_visitor
                 write_json(data=data)
                 file.save(f"{app.config['XML_UPLOADS']}/{file.filename}")
-                status_code=xml_operations.xml_validate(f"{app.config['XML_UPLOADS']}/{file.filename}")
+                status_code = xml_operations.xml_validate(
+                    f"{app.config['XML_UPLOADS']}/{file.filename}"
+                )
                 flash(message="File Uploaded successfully", category="info")
                 return redirect(location=request.url, code=status_code)
             else:
@@ -84,7 +88,6 @@ def upload_image():
     return render_template("public/upload_xml.html"), 200
 
 
-
 @app.route("/render-pages/")
 def string():
     """
@@ -92,24 +95,36 @@ def string():
     If a query string comes into the URL, it will return a parsed
     dictionary of the query string keys & values, using request.args
     """
-    if os.path.isdir(app.config['XML_UPLOADS']):
-        directory_list = os.listdir(app.config['XML_UPLOADS'])
+    if os.path.isdir(app.config["XML_UPLOADS"]):
+        directory_list = os.listdir(app.config["XML_UPLOADS"])
         if len(directory_list) > 0:
             ip_data = get_json_data()
             lis_dict = {
-                file_name: [xml_operations.get_size(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
-                            f'http://{request.host}{url_for(endpoint="xml_display", file_name=file_name)}',
-                            xml_operations.get_mod_date(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
-                            xml_operations.get_links_count(file_path=f"{app.config['XML_UPLOADS']}/{file_name}"),
-                            ip_data.get(file_name, None)]
-                for file_name in directory_list if file_name != "uploader_record.json"
+                file_name: [
+                    xml_operations.get_size(
+                        file_path=f"{app.config['XML_UPLOADS']}/{file_name}"
+                    ),
+                    f'http://{request.host}{url_for(endpoint="xml_display", file_name=file_name)}',
+                    xml_operations.get_mod_date(
+                        file_path=f"{app.config['XML_UPLOADS']}/{file_name}"
+                    ),
+                    xml_operations.get_links_count(
+                        file_path=f"{app.config['XML_UPLOADS']}/{file_name}"
+                    ),
+                    ip_data.get(file_name, None),
+                ]
+                for file_name in directory_list
+                if file_name != "uploader_record.json"
             }
             print(lis_dict)
             args = lis_dict
 
             return render_template("public/index.html", args=args)
         else:
-            flash(message="""<h1>No file is uploaded to output yet</h1>""", category="error")
+            flash(
+                message="""<h1>No file is uploaded to output yet</h1>""",
+                category="error",
+            )
             return """<h1>No file is uploaded to output yet</h1>"""
     else:
         return """<h1>There is no output folder. Upload the files</h1>"""
