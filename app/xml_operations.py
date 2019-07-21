@@ -6,10 +6,15 @@ from xml.sax.handler import ContentHandler
 
 
 def get_links_count(file_path):
-    tree = ET.parse(file_path)
+    try:
+        tree = ET.parse(file_path)
+    except Exception as e:
+        print(f"For File:{file_path} Error:{e}")
+        return type(e).__name__
     # get root element
     root = tree.getroot()
     return len(root)
+
 
 
 def get_size(file_path):
