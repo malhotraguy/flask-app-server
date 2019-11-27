@@ -4,7 +4,7 @@ itsdangerous==1.1.0
 Jinja2>=2.10.1
 MarkupSafe==1.1.1
 uWSGI==2.0.18
-Werkzeug==0.15.0
+Werkzeug==0.15.3
 Flask-Cors==3.0.8
 lxml==4.3.4
 pyopenssl==19.0.0
