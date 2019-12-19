@@ -35,10 +35,14 @@ from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
     TYPE,
     LINKID,
     UTM,
-    EXIT)
+    EXIT,
+)
+
 # from linkedin_tool_helpers import get_company_name, get_linkedin_object
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import get_linkedin_object, \
-    get_company_name
+from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
+    get_linkedin_object,
+    get_company_name,
+)
 
 
 def refine_url(url):

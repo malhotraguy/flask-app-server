@@ -3,7 +3,9 @@ import os
 
 from linkedin_api import Linkedin  # https://github.com/tomquirk/linkedin-api
 
-from brands_setup_tools.linkedin_id_and_posts_extractor.constants import COMPANY_URL_INITIAL
+from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
+    COMPANY_URL_INITIAL,
+)
 
 FILE_DIRECTORY = os.path.dirname(__file__)
 
