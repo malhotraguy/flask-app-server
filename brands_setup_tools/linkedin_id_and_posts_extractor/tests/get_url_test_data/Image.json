@@ -1,0 +1,152 @@
+{
+    "urn": "urn:li:activity:6559145147450437633",
+    "entityUrn": "urn:li:fs_feedUpdate:(COMPANY_FEED,urn:li:activity:6559145147450437633)",
+    "id": "activity:6559145147450437633",
+    "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6559145147450437633",
+    "tracking": {
+        "trackingId": "ENP/nc+ZuMmxxu7Q+7vveg=="
+    },
+    "value": {
+        "com.linkedin.voyager.feed.ShareUpdate": {
+            "actor": {
+                "com.linkedin.voyager.feed.CompanyActor": {
+                    "urn": "urn:li:company:1521182",
+                    "followingInfo": {
+                        "entityUrn": "urn:li:fs_followingInfo:urn:li:company:1521182",
+                        "following": false,
+                        "followerCount": 124638
+                    },
+                    "miniCompany": {
+                        "objectUrn": "urn:li:company:1521182",
+                        "entityUrn": "urn:li:fs_miniCompany:1521182",
+                        "name": "Deloitte Canada",
+                        "showcase": false,
+                        "active": true,
+                        "logo": {
+                            "com.linkedin.common.VectorImage": {
+                                "artifacts": [
+                                    {
+                                        "width": 200,
+                                        "fileIdentifyingUrlPathSegment": "200_200/0?e=1574899200&v=beta&t=GUUZlcYHwk_o1IS85L6LN_5aDy6EwTe9FDiDCxSgO-4",
+                                        "expiresAt": 1574899200000,
+                                        "height": 200
+                                    },
+                                    {
+                                        "width": 100,
+                                        "fileIdentifyingUrlPathSegment": "100_100/0?e=1574899200&v=beta&t=eeCOvEwpNRJM0SxlqTys04F60eGC-tEyk5HIP7HEb68",
+                                        "expiresAt": 1574899200000,
+                                        "height": 100
+                                    },
+                                    {
+                                        "width": 400,
+                                        "fileIdentifyingUrlPathSegment": "400_400/0?e=1574899200&v=beta&t=pB_6HMMfC6cc8z-bFrZerqeTnKioGlcBUvGL3CKpAFQ",
+                                        "expiresAt": 1574899200000,
+                                        "height": 400
+                                    }
+                                ],
+                                "rootUrl": "https://media.licdn.com/dms/image/C560BAQEY8c6njdl3QQ/company-logo_"
+                            }
+                        },
+                        "trackingId": "0dQaUju8RDe5bGjtuWdPtA=="
+                    },
+                    "showFollowAction": true
+                }
+            },
+            "urn": "urn:li:activity:6559145147450437633",
+            "edited": false,
+            "shareAudience": "PUBLIC",
+            "shareUrn": "urn:li:share:6559145146968088576",
+            "createdTime": 1563822066085,
+            "actions": [
+                {
+                    "text": "Share via",
+                    "value": {
+                        "com.linkedin.voyager.feed.actions.ShareVia": {
+                            "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6559145147450437633"
+                        }
+                    }
+                },
+                {
+                    "subtext": "I don't want to see this post in my feed",
+                    "text": "Hide this post",
+                    "value": {
+                        "com.linkedin.voyager.feed.actions.Feedback": {}
+                    }
+                },
+                {
+                    "subtext": "This post is offensive or the account is hacked",
+                    "text": "Report this post",
+                    "value": {
+                        "com.linkedin.voyager.feed.actions.Report": {}
+                    }
+                },
+                {
+                    "subtext": "Get recommended sources to follow",
+                    "text": "Improve my feed",
+                    "value": {
+                        "com.linkedin.voyager.feed.actions.Survey": {}
+                    }
+                }
+            ],
+            "content": {
+                "com.linkedin.voyager.feed.ShareImage": {
+                    "image": {
+                        "com.linkedin.voyager.common.MediaProxyImage": {
+                            "url": "https://media-exp1.licdn.com/media-proxy/ext?w=800&h=800&f=pj&hash=ROdIFrrWYfJOCKc8VUu3DKtNj7Q%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6jnhodx1Ey9KGTqAGj6E5DQJHUA3L0CHH05IbfPWjvLM-JL7X1rUAUfHgDjQA1Ke61SDLlEI6-KoPnett4iJXnJpP5agYUbhl4j3lK6w"
+                        }
+                    },
+                    "text": {
+                        "values": [
+                            {
+                                "value": "We interviewed 30 corporate and government organizations to understand the end-user needs and pain points related to corporate payments. Find out what the results were https://deloi.tt/32HCk9g "
+                            },
+                            {
+                                "value": "#paymentmodernization"
+                            }
+                        ]
+                    },
+                    "originalImage": {
+                        "string": "https://image-store.slidesharecdn.com/6e8ff7d9-24d2-47f1-8242-219877932223-large.jpeg"
+                    },
+                    "fileId": ""
+                }
+            }
+        }
+    },
+    "isSponsored": false,
+    "socialDetail": {
+        "urn": "urn:li:activity:6559145147450437633",
+        "threadId": "activity:6559145147450437633",
+        "totalSocialActivityCounts": {
+            "socialDetailEntityUrn": "urn:li:fs_socialDetail:urn:li:activity:6559145147450437633",
+            "urn": "urn:li:activity:6559145147450437633",
+            "numComments": 0,
+            "entityUrn": "urn:li:fs_socialActivityCounts:urn:li:activity:6559145147450437633",
+            "numLikes": 27,
+            "liked": false
+        },
+        "comments": {
+            "elements": [],
+            "paging": {
+                "total": 0,
+                "count": 0,
+                "start": 0,
+                "links": []
+            }
+        },
+        "entityUrn": "urn:li:fs_socialDetail:urn:li:activity:6559145147450437633",
+        "commentingDisabled": false,
+        "liked": false,
+        "showShareButton": false,
+        "totalShares": 0,
+        "likes": {
+            "elements": [],
+            "paging": {
+                "total": 27,
+                "start": 0,
+                "count": 0,
+                "links": []
+            }
+        }
+    }
+}

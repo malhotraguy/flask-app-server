@@ -1,0 +1,339 @@
+{
+    "actor": {
+        "com.linkedin.voyager.feed.CompanyActor": {
+            "urn": "urn:li:company:2525300",
+            "followingInfo": {
+                "entityUrn": "urn:li:fs_followingInfo:urn:li:company:2525300",
+                "following": false,
+                "followerCount": 1144946
+            },
+            "miniCompany": {
+                "objectUrn": "urn:li:company:2525300",
+                "entityUrn": "urn:li:fs_miniCompany:2525300",
+                "name": "KPMG",
+                "showcase": false,
+                "active": true,
+                "logo": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1574294400&v=beta&t=dY5NiXphIPFdLsbUYLODIVMIXwfI4woKxUMPL3uiz58",
+                                "expiresAt": 1574294400000,
+                                "height": 200
+                            },
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1574294400&v=beta&t=NSH7JyDHeXVEQ5RBaWxhi5N232f0tDPyyvUpvkou7dk",
+                                "expiresAt": 1574294400000,
+                                "height": 100
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1574294400&v=beta&t=BZVCD8tvijxN8V53sQ9OlOxEXpbqG2zZAyOgmSF5qOQ",
+                                "expiresAt": 1574294400000,
+                                "height": 400
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C560BAQGSV3qMCbB_tw/company-logo_"
+                    }
+                },
+                "trackingId": "Sme1vtNOR/CeearFz8WgqQ=="
+            },
+            "showFollowAction": true
+        }
+    },
+    "urn": "urn:li:activity:6543942073903652864",
+    "edited": false,
+    "shareAudience": "PUBLIC",
+    "shareUrn": "urn:li:share:6543942073500991488",
+    "createdTime": 1560197370904,
+    "originalUpdate": {
+        "urn": "urn:li:activity:6542318223872798720",
+        "entityUrn": "urn:li:fs_feedUpdate:(COMPANY_FEED,urn:li:activity:6542318223872798720)",
+        "id": "activity:6542318223872798720",
+        "tracking": {
+            "trackingId": "O7tMQE+xQf531eg3ZfYaHQ=="
+        },
+        "value": {
+            "com.linkedin.voyager.feed.ShareUpdate": {
+                "actor": {
+                    "com.linkedin.voyager.feed.CompanyActor": {
+                        "urn": "urn:li:company:10980960",
+                        "followingInfo": {
+                            "entityUrn": "urn:li:fs_followingInfo:urn:li:company:10980960",
+                            "following": false,
+                            "followerCount": 659
+                        },
+                        "miniCompany": {
+                            "objectUrn": "urn:li:company:10980960",
+                            "entityUrn": "urn:li:fs_miniCompany:10980960",
+                            "name": "FundForum",
+                            "showcase": true,
+                            "active": true,
+                            "logo": {
+                                "com.linkedin.common.VectorImage": {
+                                    "artifacts": [
+                                        {
+                                            "width": 200,
+                                            "fileIdentifyingUrlPathSegment": "200_200/0?e=1574294400&v=beta&t=7Y4xkXboGFYe2j4BWpk76PN334C-Ui3_JiutxDjG9R0",
+                                            "expiresAt": 1574294400000,
+                                            "height": 200
+                                        },
+                                        {
+                                            "width": 100,
+                                            "fileIdentifyingUrlPathSegment": "100_100/0?e=1574294400&v=beta&t=Zndn2igH9-T2TTJ11PwCFpHMti7wuBSo_3nd7x3tawM",
+                                            "expiresAt": 1574294400000,
+                                            "height": 100
+                                        },
+                                        {
+                                            "width": 400,
+                                            "fileIdentifyingUrlPathSegment": "400_400/0?e=1574294400&v=beta&t=5rfy1j1PiR9ElEt4IsFV_vI8M2Kg3m1YVpJ8oLWy32s",
+                                            "expiresAt": 1574294400000,
+                                            "height": 400
+                                        }
+                                    ],
+                                    "rootUrl": "https://media.licdn.com/dms/image/C510BAQFr5mGiNHcUxA/company-logo_"
+                                }
+                            },
+                            "trackingId": "c3ACpZA9RX2bNPSPVKd+AA=="
+                        },
+                        "showFollowAction": true
+                    }
+                },
+                "urn": "urn:li:activity:6542318223872798720",
+                "edited": false,
+                "shareAudience": "PUBLIC",
+                "shareUrn": "urn:li:share:6542318223361093632",
+                "createdTime": 1559810214871,
+                "actions": [
+                    {
+                        "text": "Share via",
+                        "value": {
+                            "com.linkedin.voyager.feed.actions.ShareVia": {
+                                "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6542318223872798720"
+                            }
+                        }
+                    },
+                    {
+                        "subtext": "I don't want to see this post in my feed",
+                        "text": "Hide this post",
+                        "value": {
+                            "com.linkedin.voyager.feed.actions.Feedback": {}
+                        }
+                    },
+                    {
+                        "subtext": "This post is offensive or the account is hacked",
+                        "text": "Report this post",
+                        "value": {
+                            "com.linkedin.voyager.feed.actions.Report": {}
+                        }
+                    },
+                    {
+                        "subtext": "Get recommended sources to follow",
+                        "text": "Improve my feed",
+                        "value": {
+                            "com.linkedin.voyager.feed.actions.Survey": {}
+                        }
+                    }
+                ],
+                "content": {
+                    "com.linkedin.voyager.feed.ShareArticle": {
+                        "urn": "urn:li:article:7808654665366035765",
+                        "image": {
+                            "com.linkedin.voyager.common.MediaProxyImage": {
+                                "originalHeight": 335,
+                                "url": "https://media.licdn.com/dms/image/C4D22AQFSgol4FHONzw/feedshare-shrink_8192/0?e=1569456000&v=beta&t=DnoM1ShsqOuC1C0Zi1qNnWiQP064W3k0ga7-paT9-lo",
+                                "originalWidth": 600
+                            }
+                        },
+                        "articleType": "REGULAR",
+                        "subtitle": "finance.knect365.com",
+                        "description": "The world's number one investment management event bringing together over 1,500 decision makers, over 750 investment managers and over 300 fund buyers and asset owners. Network, learn and connect.",
+                        "resolvedUrl": "https://finance.knect365.com/fundforum-international/",
+                        "text": {
+                            "values": [
+                                {
+                                    "value": "Tom Brown",
+                                    "entity": {
+                                        "com.linkedin.voyager.identity.shared.MiniProfile": {
+                                            "firstName": "Tom",
+                                            "lastName": "Brown",
+                                            "occupation": "Global and UK Head of Asset Management, Partner",
+                                            "objectUrn": "urn:li:member:78276880",
+                                            "entityUrn": "urn:li:fs_miniProfile:ACoAAASqaRABdSgQ_LlyBQzpdPuXNVXRTBK8GTs",
+                                            "publicIdentifier": "tombrownkpmg",
+                                            "picture": {
+                                                "com.linkedin.common.VectorImage": {
+                                                    "artifacts": [
+                                                        {
+                                                            "width": 100,
+                                                            "fileIdentifyingUrlPathSegment": "100_100/0?e=1571875200&v=beta&t=1CwZ2nCRugtPsjSbnLkU4atdML9AeM7eZpA8EMBCCfM",
+                                                            "expiresAt": 1571875200000,
+                                                            "height": 100
+                                                        },
+                                                        {
+                                                            "width": 200,
+                                                            "fileIdentifyingUrlPathSegment": "200_200/0?e=1571875200&v=beta&t=pb3IrPCl_-CuZ-tbFqE2cX4yBSk2CM_inqeWujb4ymQ",
+                                                            "expiresAt": 1571875200000,
+                                                            "height": 200
+                                                        },
+                                                        {
+                                                            "width": 400,
+                                                            "fileIdentifyingUrlPathSegment": "400_400/0?e=1571875200&v=beta&t=nadG2dBHpFn0PElmi-uM5JdyW9NoZTUDWEkHsf7KRmw",
+                                                            "expiresAt": 1571875200000,
+                                                            "height": 400
+                                                        },
+                                                        {
+                                                            "width": 800,
+                                                            "fileIdentifyingUrlPathSegment": "800_800/0?e=1571875200&v=beta&t=woMXFzAQgcZm2U54fC5K3ITj3dRDco3as6U4vcZ1IuY",
+                                                            "expiresAt": 1571875200000,
+                                                            "height": 800
+                                                        }
+                                                    ],
+                                                    "rootUrl": "https://media.licdn.com/dms/image/C4D03AQEy_jhaeHs0Pg/profile-displayphoto-shrink_"
+                                                }
+                                            },
+                                            "trackingId": "A2d7y7H8RnCoyvqiMoPKMw=="
+                                        }
+                                    }
+                                },
+                                {
+                                    "value": ", Global Head of Asset Management "
+                                },
+                                {
+                                    "value": "KPMG",
+                                    "entity": {
+                                        "com.linkedin.voyager.entities.shared.MiniCompany": {
+                                            "objectUrn": "urn:li:company:2525300",
+                                            "entityUrn": "urn:li:fs_miniCompany:2525300",
+                                            "name": "KPMG",
+                                            "showcase": false,
+                                            "active": true,
+                                            "logo": {
+                                                "com.linkedin.common.VectorImage": {
+                                                    "artifacts": [
+                                                        {
+                                                            "width": 200,
+                                                            "fileIdentifyingUrlPathSegment": "200_200/0?e=1574294400&v=beta&t=dY5NiXphIPFdLsbUYLODIVMIXwfI4woKxUMPL3uiz58",
+                                                            "expiresAt": 1574294400000,
+                                                            "height": 200
+                                                        },
+                                                        {
+                                                            "width": 100,
+                                                            "fileIdentifyingUrlPathSegment": "100_100/0?e=1574294400&v=beta&t=NSH7JyDHeXVEQ5RBaWxhi5N232f0tDPyyvUpvkou7dk",
+                                                            "expiresAt": 1574294400000,
+                                                            "height": 100
+                                                        },
+                                                        {
+                                                            "width": 400,
+                                                            "fileIdentifyingUrlPathSegment": "400_400/0?e=1574294400&v=beta&t=BZVCD8tvijxN8V53sQ9OlOxEXpbqG2zZAyOgmSF5qOQ",
+                                                            "expiresAt": 1574294400000,
+                                                            "height": 400
+                                                        }
+                                                    ],
+                                                    "rootUrl": "https://media.licdn.com/dms/image/C560BAQGSV3qMCbB_tw/company-logo_"
+                                                }
+                                            },
+                                            "trackingId": "8aTHKxZlQcOVJ9fnqGI4Rg=="
+                                        }
+                                    }
+                                },
+                                {
+                                    "value": ", joins us at "
+                                },
+                                {
+                                    "value": "#FundForum"
+                                },
+                                {
+                                    "value": " in Copenhagen in a few weeks to deliver a chairman's welcome address to the conference. Find out more and book your tickets here: https://lnkd.in/ezWmven"
+                                }
+                            ]
+                        },
+                        "title": "Alpha. Beta. Leader.",
+                        "url": "https://finance.knect365.com/fundforum-international/",
+                        "article": {
+                            "saveAction": {
+                                "entityUrn": "urn:li:fs_saveAction:(SAVE,urn:li:article:7808654665366035765)",
+                                "saved": false
+                            },
+                            "entityUrn": "urn:li:fs_feedMiniArticle:urn:li:article:7808654665366035765",
+                            "saved": false,
+                            "article": {
+                                "entityUrn": "urn:li:fs_miniArticle:7808654665366035765",
+                                "title": "Alpha. Beta. Leader.",
+                                "url": "https://finance.knect365.com/fundforum-international/"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "isSponsored": false,
+        "socialDetail": {
+            "urn": "urn:li:activity:6542318223872798720",
+            "threadId": "activity:6542318223872798720",
+            "comments": {
+                "elements": [],
+                "paging": {
+                    "total": 0,
+                    "start": 0,
+                    "count": 0,
+                    "links": []
+                }
+            },
+            "totalSocialActivityCounts": {
+                "socialDetailEntityUrn": "urn:li:fs_socialDetail:urn:li:activity:6542318223872798720",
+                "urn": "urn:li:activity:6542318223872798720",
+                "numComments": 0,
+                "entityUrn": "urn:li:fs_socialActivityCounts:urn:li:activity:6542318223872798720",
+                "numLikes": 0,
+                "liked": false
+            },
+            "entityUrn": "urn:li:fs_socialDetail:urn:li:activity:6542318223872798720",
+            "liked": false,
+            "showShareButton": false,
+            "totalShares": 0,
+            "likes": {
+                "elements": [],
+                "paging": {
+                    "total": 0,
+                    "start": 0,
+                    "count": 0,
+                    "links": []
+                }
+            }
+        }
+    },
+    "actions": [
+        {
+            "text": "Share via",
+            "value": {
+                "com.linkedin.voyager.feed.actions.ShareVia": {
+                    "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6543942073903652864"
+                }
+            }
+        },
+        {
+            "subtext": "I don't want to see this post in my feed",
+            "text": "Hide this post",
+            "value": {
+                "com.linkedin.voyager.feed.actions.Feedback": {}
+            }
+        },
+        {
+            "subtext": "This post is offensive or the account is hacked",
+            "text": "Report this post",
+            "value": {
+                "com.linkedin.voyager.feed.actions.Report": {}
+            }
+        },
+        {
+            "subtext": "Get recommended sources to follow",
+            "text": "Improve my feed",
+            "value": {
+                "com.linkedin.voyager.feed.actions.Survey": {}
+            }
+        }
+    ]
+}

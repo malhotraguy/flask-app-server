@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Fetch IDs</h2>
+<form action="/id" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Enter company identifier:- </label>
+          <div class="custom-file">
+            <input type="text" class="custom-file-input" name="company" placeholder="URN, URID, LinkedIn Url">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+<h2>Fetch Posts</h2>
+<form action="/posts" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Enter company identifier:- </label>
+          <div class="custom-file">
+            <input type="text" class="custom-file-input" name="company" placeholder="URN, URID, LinkedIn Url">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+<h2>Fetch Engagements</h2>
+<form action="/compare" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Enter company identifier:- </label>
+          <div class="custom-file">
+            <input type="text" class="custom-file-input" name="company" placeholder="URN, URID, LinkedIn Url">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+</body>
+</html>

@@ -1,0 +1,131 @@
+{
+    "summary": {
+        "attributes": [
+            {
+                "start": 140,
+                "length": 18,
+                "type": {
+                    "com.linkedin.pemberly.text.Hyperlink": {
+                        "url": "https://www.nytimes.com/guides/working-womans-handbook/overcome-impostor-syndrome"
+                    }
+                }
+            },
+            {
+                "start": 0,
+                "length": 280,
+                "type": {
+                    "com.linkedin.pemberly.text.Paragraph": {}
+                }
+            },
+            {
+                "start": 280,
+                "length": 1,
+                "type": {
+                    "com.linkedin.pemberly.text.LineBreak": {}
+                }
+            },
+            {
+                "start": 280,
+                "length": 1,
+                "type": {
+                    "com.linkedin.pemberly.text.Paragraph": {}
+                }
+            },
+            {
+                "start": 281,
+                "length": 24,
+                "type": {
+                    "com.linkedin.pemberly.text.ListItem": {}
+                }
+            },
+            {
+                "start": 305,
+                "length": 33,
+                "type": {
+                    "com.linkedin.pemberly.text.ListItem": {}
+                }
+            },
+            {
+                "start": 338,
+                "length": 34,
+                "type": {
+                    "com.linkedin.pemberly.text.ListItem": {}
+                }
+            },
+            {
+                "start": 281,
+                "length": 91,
+                "type": {
+                    "com.linkedin.pemberly.text.List": {
+                        "ordered": false
+                    }
+                }
+            },
+            {
+                "start": 372,
+                "length": 1,
+                "type": {
+                    "com.linkedin.pemberly.text.LineBreak": {}
+                }
+            },
+            {
+                "start": 372,
+                "length": 1,
+                "type": {
+                    "com.linkedin.pemberly.text.Paragraph": {}
+                }
+            },
+            {
+                "start": 373,
+                "length": 231,
+                "type": {
+                    "com.linkedin.pemberly.text.Paragraph": {}
+                }
+            }
+        ],
+        "text": "\u201cImposter syndrome,\" or that feeling that you just don't belong, impacts women and minority groups\u00a0disproportionately at work, according to The New York Times. It's also common among high achievers, creatives and students. So how to overcome it? Here are some tips from the Times:\nOwn your accomplishmentsVisualize what success looks likeMake a list of your qualifications\nHave questions about imposter syndrome? Join us live Wednesday at 12:00 p.m. ET with New York Times Gender Editor Jessica Bennett to discuss this and more on Working Together \u2014 LinkedIn's show on the changing face of U.S. business."
+    },
+    "entityUrn": "urn:li:fs_feedTopic:(urn:li:contentTopic:4422635,PHONE_HOMEPAGE_VOYAGER)",
+    "topic": {
+        "trending": false,
+        "image": {
+            "com.linkedin.voyager.common.MediaProcessorImage": {
+                "attribution": "TEXT: Caroline Fairchild; PHOTO: Getty Images",
+                "id": "null"
+            }
+        },
+        "createdAt": 1565785341210,
+        "guides": [
+            {
+                "displayText": "Content",
+                "type": "VERTICAL",
+                "guideInfo": {
+                    "com.linkedin.voyager.search.VerticalGuide": {
+                        "vertical": "CONTENT"
+                    }
+                },
+                "urlParameter": "v->CONTENT",
+                "selected": false
+            },
+            {
+                "displayText": "Topic",
+                "type": "FACET",
+                "guideInfo": {
+                    "com.linkedin.voyager.search.FacetGuide": {}
+                },
+                "urlParameter": "anchorTopic->4422635",
+                "selected": false
+            }
+        ],
+        "useCase": "STORY_LINE",
+        "name": "Do you feel like a fraud at work?",
+        "recommendationTrackingId": "\u009e\u00f4\u00df\u00a7\u00a9\u00a1\u0012\u00e7H6\u00a8\u00c4\u00a3%%\u00b1",
+        "backendUrn": "urn:li:contentTopic:4422635"
+    },
+    "tracking": {
+        "trackingId": "nvTfp6mhEudINqjEoyUlsQ=="
+    },
+    "headline": {
+        "text": "\"Imposter syndrome\" wasn't a term until 1978, but workers have likely been feeling it forever. "
+    }
+}

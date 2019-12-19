@@ -1,0 +1,96 @@
+{
+    "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6568106673460908032",
+    "value": {
+        "com.linkedin.voyager.feed.ShareUpdate": {
+            "content": {
+                "com.linkedin.voyager.feed.ShareArticle": {
+                    "urn": "urn:li:article:7244067628917795210",
+                    "articleType": "REGULAR",
+                    "subtitle": "www2.deloitte.com",
+                    "description": "InsurCloud reduces risk and increases speed to market through a pre-built accelerator designed for the Canadian insurance industry. The InsurCloud solution offers a suite of customizable features, allowing carriers to stay ahead of the curve.",
+                    "resolvedUrl": "https://www2.deloitte.com/ca/en/pages/risk/articles/insurcloud.html",
+                    "text": {
+                        "values": [
+                            {
+                                "value": "We are excited to share that "
+                            },
+                            {
+                                "value": "Peel Mutual Insurance Company",
+                                "entity": {
+                                    "com.linkedin.voyager.entities.shared.MiniCompany": {
+                                        "objectUrn": "urn:li:company:806281",
+                                        "entityUrn": "urn:li:fs_miniCompany:806281",
+                                        "name": "Peel Mutual Insurance Company",
+                                        "showcase": false,
+                                        "active": true,
+                                        "trackingId": "o4WesNMERZqOHcsTCFaRXQ=="
+                                    }
+                                }
+                            },
+                            {
+                                "value": " has selected Deloitte\u2019s "
+                            },
+                            {
+                                "value": "#InsurCloud"
+                            },
+                            {
+                                "value": " solution to modernize its technology infrastructure and optimize customer and broker engagement. Learn more about InsurCloud, our modern solution for insurance carriers: https://deloi.tt/2MjnG36"
+                            }
+                        ]
+                    },
+                    "title": "InsurCloud | Deloitte Canada",
+                    "url": "https://deloi.tt/2MjnG36",
+                    "article": {
+                        "saveAction": {
+                            "entityUrn": "urn:li:fs_saveAction:(SAVE,urn:li:article:7244067628917795210)",
+                            "saved": false
+                        },
+                        "entityUrn": "urn:li:fs_feedMiniArticle:urn:li:article:7244067628917795210",
+                        "saved": false,
+                        "article": {
+                            "entityUrn": "urn:li:fs_miniArticle:7244067628917795210",
+                            "title": "InsurCloud | Deloitte Canada",
+                            "url": "https://www2.deloitte.com/ca/en/pages/risk/articles/insurcloud.html"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "isSponsored": false,
+    "socialDetail": {
+        "urn": "urn:li:activity:6568106673460908032",
+        "threadId": "activity:6568106673460908032",
+        "totalSocialActivityCounts": {
+            "socialDetailEntityUrn": "urn:li:fs_socialDetail:urn:li:activity:6568106673460908032",
+            "urn": "urn:li:activity:6568106673460908032",
+            "numComments": 0,
+            "entityUrn": "urn:li:fs_socialActivityCounts:urn:li:activity:6568106673460908032",
+            "numLikes": 65,
+            "liked": false
+        },
+        "comments": {
+            "elements": [],
+            "paging": {
+                "total": 0,
+                "count": 0,
+                "start": 0,
+                "links": []
+            }
+        },
+        "entityUrn": "urn:li:fs_socialDetail:urn:li:activity:6568106673460908032",
+        "commentingDisabled": false,
+        "liked": false,
+        "showShareButton": false,
+        "totalShares": 0,
+        "likes": {
+            "elements": [],
+            "paging": {
+                "total": 65,
+                "start": 0,
+                "count": 0,
+                "links": []
+            }
+        }
+    }
+}

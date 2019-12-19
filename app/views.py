@@ -1,14 +1,23 @@
 import json
 import os
 import sys
+from datetime import datetime
 
-from flask import request, render_template, redirect, flash, url_for
+import pandas as pd
+from flask import request, render_template, redirect, flash, url_for, abort
 from flask_cors import CORS
 
 from app import app
 from app.xml_operations import get_size, get_mod_date, get_links_count, xml_validate
+from brands_setup_tools.linkedin_id_and_posts_extractor.get_posts import get_updates, get_post_link_and_social_activity, \
+    get_url
+from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_engagements import get_engagements
+from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_id import get_linkedin_id
+from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import get_company_name, \
+    get_linkedin_object
 
 CORS(app)
+linkedin_object = get_linkedin_object()
 XML_UPLOADS = "XML_UPLOADS"
 ALLOWED_FILE_EXTENSIONS = "ALLOWED_FILE_EXTENSIONS"
 EXCLUDED_DISPLAY_FILES = ["uploader_record.json", "all_files_detail.json"]
@@ -129,3 +138,103 @@ def render_all_pages():
         data=all_files_detail,
     )
     return render_template("public/index.html", args=display_data)
+
+
+@app.route("/linkedin_form")
+def linkedin_form():
+    return render_template("public/linkedin_form.html"), 200
+
+
+@app.route("/id", methods=("POST", "GET"))
+def id_html_table():
+    start_time = datetime.now()
+    company_identifier = request.form.get("company")
+    company = get_company_name(input_string=company_identifier)
+    df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
+    print(f"Time taken to fetch the result= {datetime.now() - start_time}")
+    print("=" * 130)
+    return render_template(
+        "public/simple.html",
+        page_title=f"IDs for {company}",
+        tables=[
+            df_ids.to_html(
+                classes=["table-bordered", "table-striped", "table-hover"],
+                justify="initial",
+                render_links=True,
+                escape=False,
+                float_format="{:,.0f}".format,
+            )
+        ],
+        titles=df_ids.columns.values,
+    )
+
+
+@app.route("/posts", methods=("POST", "GET"))
+def posts_html_table():
+    start_time = datetime.now()
+    company_identifier = request.form.get("company")
+    company = get_company_name(input_string=company_identifier)
+    company_updates = get_updates(linkedin_object=linkedin_object, company_name=company)
+    if not company_updates:
+        return f"No post for :{company_identifier}"
+    df_post = pd.DataFrame()
+    for update in company_updates:
+        linkedin_post_link, total_likes = get_post_link_and_social_activity(item=update)
+        shared_url = get_url(item=update)
+        df_post = df_post.append(
+            {
+                "LinkedIn Post Url": linkedin_post_link,
+                "Total Likes": total_likes,
+                "Shared Url": shared_url,
+            },
+            ignore_index=True,
+        )
+    print(f"Time taken to fetch the result= {datetime.now() - start_time}")
+    print("=" * 130)
+    return render_template(
+        "public/simple.html",
+        page_title=f"Posts for {company}",
+        tables=[
+            df_post.to_html(
+                classes=["table-bordered", "table-striped", "table-hover"],
+                justify="initial",
+                render_links=True,
+                escape=False,
+                float_format="{:,.0f}".format,
+            )
+        ],
+        titles=df_post.columns.values,
+    )
+
+
+@app.route("/compare", methods=("POST", "GET"))
+def compare_engagements():
+    companies = request.form.get("company").split(",")
+    print(companies)
+    if type(companies) is not list or len(companies) == 0:
+        abort(400, "Check the arguments passed with 'company' parameter of the URL")
+    df_engagements = pd.DataFrame()
+    for company in companies:
+        total_posts, total_likes = get_engagements(linkedin_object, company)
+        df_engagements = df_engagements.append(
+            {
+                "Company": company,
+                "Total Posts": total_posts,
+                "Total Likes": total_likes,
+            },
+            ignore_index=True,
+        )
+    return render_template(
+        "public/simple.html",
+        page_title=f"Comparing Engagements",
+        tables=[
+            df_engagements.to_html(
+                classes=["table-bordered", "table-striped", "table-hover"],
+                justify="initial",
+                render_links=True,
+                escape=False,
+                float_format="{:,.0f}".format,
+            )
+        ],
+        titles=df_engagements.columns.values,
+    )
