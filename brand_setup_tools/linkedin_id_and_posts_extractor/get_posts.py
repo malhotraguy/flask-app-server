@@ -7,7 +7,7 @@ import requests
 from requests.exceptions import SSLError
 from urllib3.exceptions import MaxRetryError
 
-from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     SHAREUPDATE,
     SHAREIMAGE,
     SHAREARTICLE,
@@ -39,7 +39,7 @@ from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
 )
 
 # from linkedin_tool_helpers import get_company_name, get_linkedin_object
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
     get_company_name,
 )

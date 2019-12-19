@@ -3,7 +3,7 @@ from datetime import datetime
 
 import pandas as pd
 
-from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     COLORSTART,
     COLOREND,
     AFFILIATED_COMPANIES_RESULTS,
@@ -15,7 +15,7 @@ from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
     CITY,
     EXIT,
 )
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_company_name,
     get_linkedin_object,
 )

@@ -9,11 +9,11 @@ from flask_cors import CORS
 
 from app import app
 from app.xml_operations import get_size, get_mod_date, get_links_count, xml_validate
-from brands_setup_tools.linkedin_id_and_posts_extractor.get_posts import get_updates, get_post_link_and_social_activity, \
+from brand_setup_tools.linkedin_id_and_posts_extractor.get_posts import get_updates, get_post_link_and_social_activity, \
     get_url
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_engagements import get_engagements
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_id import get_linkedin_id
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import get_company_name, \
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_engagements import get_engagements
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_id import get_linkedin_id
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import get_company_name, \
     get_linkedin_object
 
 CORS(app)

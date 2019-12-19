@@ -2,16 +2,16 @@ import os
 import sys
 from datetime import datetime
 
-from brands_setup_tools.linkedin_id_and_posts_extractor.constants import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     DONE,
     CLEAR,
 )
-from brands_setup_tools.linkedin_id_and_posts_extractor.get_posts import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.get_posts import (
     get_updates,
     get_post_link_and_social_activity,
 )
-from brands_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_company_name,
     get_linkedin_object,
 )
