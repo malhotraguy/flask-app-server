@@ -86,6 +86,12 @@ def upload_xml():
             )
             file.save(f"{app.config[XML_UPLOADS]}/{file.filename}")
             xml_validate(f"{app.config[XML_UPLOADS]}/{file.filename}")
+            all_files_data = get_json_data(f"{app.config[XML_UPLOADS]}/all_files_detail.json")
+            all_files_data[file.filename] = get_file_detail(file_name=file.filename, ip_data=uploader_record_data)
+            write_json(
+                filepath=f"{app.config[XML_UPLOADS]}/all_files_detail.json",
+                data=all_files_data,
+            )
             return redirect(location=request.url, code=302)
 
     elif request.method == "GET":
