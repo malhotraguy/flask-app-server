@@ -1,6 +1,6 @@
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder="templates")
 
 if app.config["ENV"] == "production":
 
@@ -14,4 +14,5 @@ else:
 
     app.config.from_object("config.ProductionConfig")
 
-from app import views ,xml_operations
+
+from app import views, xml_operations

@@ -1,10 +1,15 @@
 import os
+import sys
 import time
-import xml.etree.ElementTree as ET
-from xml.sax import make_parser, SAXParseException
+from xml.sax import SAXParseException
 from xml.sax.handler import ContentHandler
 
+import defusedxml.ElementTree as ET
+from defusedxml import defuse_stdlib
+from defusedxml.sax import make_parser
 from flask import flash
+
+defuse_stdlib()  # Calling defusedxml.defuse_stdlib to patch known xml security vulnerabilities
 
 
 def get_links_count(file_path):
@@ -38,23 +43,11 @@ def xml_validate(file_path):
     if os.path.isfile(file_path):
         try:
             parsefile(file_path)
-            print(f"{file_path} is well-formed xml file")
-            status_code = 302
-            return status_code
+            flash(message="File Uploaded successfully", category="info")
         except SAXParseException as e:
-            flash(message=str(e), category="error")
+            flash(message=f"File removed because : {str(e)}", category="error")
             error_type = str(e).split(sep=" ", maxsplit=1)[1]
             if error_type == "syntax error":
                 os.remove(file_path)
-                print(f"File: {file_path} Removed! because it is not xml file.")
-                status_code = 400
-                return status_code
-            print(f"{e}")
     else:
-        print(f"{file_path} doesnt exist.")
-
-
-if __name__ == "__main__":
-    #     calling main function
-    file_path = "./po.txt"
-    xml_validate(file_path)
+        print(f"{file_path} doesnt exist.", file=sys.stderr)
