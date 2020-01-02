@@ -17,7 +17,6 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers imp
     get_linkedin_object
 
 CORS(app)
-linkedin_object = get_linkedin_object()
 XML_UPLOADS = "XML_UPLOADS"
 ALLOWED_FILE_EXTENSIONS = "ALLOWED_FILE_EXTENSIONS"
 EXCLUDED_DISPLAY_FILES = ["uploader_record.json", "all_files_detail.json"]
@@ -148,6 +147,7 @@ def linkedin_form():
 @app.route("/id", methods=("POST", "GET"))
 def id_html_table():
     start_time = datetime.now()
+    linkedin_object = get_linkedin_object()
     company_identifier = request.form.get("company")
     company = get_company_name(input_string=company_identifier)
     df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
@@ -172,6 +172,7 @@ def id_html_table():
 @app.route("/posts", methods=("POST", "GET"))
 def posts_html_table():
     start_time = datetime.now()
+    linkedin_object = get_linkedin_object()
     company_identifier = request.form.get("company")
     company = get_company_name(input_string=company_identifier)
     company_updates = get_updates(linkedin_object=linkedin_object, company_name=company)
@@ -209,6 +210,7 @@ def posts_html_table():
 
 @app.route("/compare", methods=("POST", "GET"))
 def compare_engagements():
+    linkedin_object = get_linkedin_object()
     companies = request.form.get("company").split(",")
     print(companies)
     if type(companies) is not list or len(companies) == 0:
