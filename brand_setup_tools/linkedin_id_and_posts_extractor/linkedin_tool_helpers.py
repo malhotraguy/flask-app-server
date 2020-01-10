@@ -29,5 +29,7 @@ def get_company_name(input_string):
 def get_linkedin_object():
     username, password = get_key()
     # Authenticate using any Linkedin account credentials
-    linkedin_object = Linkedin(username=username, password=password)
+    linkedin_object = Linkedin(
+        username=username, password=password, refresh_cookies=True
+    )
     return linkedin_object

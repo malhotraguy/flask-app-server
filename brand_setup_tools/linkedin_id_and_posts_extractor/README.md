@@ -17,7 +17,21 @@ configured in credentials.json file.
 # Posts Extractor:-
 1) Assuming  the virtual environment has been setup and requirements has been installed by following the steps 1 to 3
  mentioned above in ID Extractor.
+2) Maximum posts to be fetched has been set to latest `500` and this number can be changed by changing the constant `POSTS_MAX_RESULT` in constants.py
 2) ```python3 get_posts.py```
+
+# Engagements Extractor:- 
+1) Assuming  the virtual environment has been setup and requirements has been installed by following the steps 1 to 3
+ mentioned above in ID Extractor.
+2) ```python3 linkedin_engagements.py```
+
+# Web App:-
+1) The tool can be accessed through webapp interface at : ```http://rss.concured.com:9090/linkedin_form```
+2) On interface three services can be accessed, each being labelled under its title e.g : Fetch IDs, Fetch Posts and Fetch Engagements.
+3) Fetch IDs can take company identifier which is either URN (e.g concured), URID(e.g 10036373) or Company's LinkedIn url(e.g ```https://www.linkedin.com/company/concured/``` )
+4) Fetch Posts can take company identifier which is either URN (e.g concured), URID(e.g 10036373) or Company's LinkedIn url(e.g ```https://www.linkedin.com/company/concured/``` )
+5) Fetch Engagements can take company identifier which is either URN (e.g concured), URID(e.g 10036373) or Company's LinkedIn url(e.g ```https://www.linkedin.com/company/concured/``` ) 
+6) Fetch Engagements can compare the engagements of multiple companies and company identifiers  are provided separated by "," . E.g concured,deloitte,kpmg
 
 ## Caution:-
 This project violates [Linkedin's User Agreement Section 8.2](https://www.linkedin.com/legal/user-agreement),

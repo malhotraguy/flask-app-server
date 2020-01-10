@@ -38,3 +38,4 @@ CITY = "city"
 EXIT = "exit"
 CLEAR = "clear"
 DONE = "done"
+POSTS_MAX_RESULT = 500

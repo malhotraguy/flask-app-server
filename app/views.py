@@ -9,14 +9,24 @@ from flask_cors import CORS
 
 from app import app
 from app.xml_operations import get_size, get_mod_date, get_links_count, xml_validate
-from brand_setup_tools.linkedin_id_and_posts_extractor.get_posts import get_updates, get_post_link_and_social_activity, \
-    get_url
-from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_engagements import get_engagements
-from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_id import get_linkedin_id
-from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import get_company_name, \
-    get_linkedin_object
+from brand_setup_tools.linkedin_id_and_posts_extractor.get_posts import (
+    get_updates,
+    get_post_link_and_social_activity,
+    get_url,
+)
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_engagements import (
+    get_engagements,
+)
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_id import (
+    get_linkedin_id,
+)
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
+    get_company_name,
+    get_linkedin_object,
+)
 
 CORS(app)
+
 XML_UPLOADS = "XML_UPLOADS"
 ALLOWED_FILE_EXTENSIONS = "ALLOWED_FILE_EXTENSIONS"
 EXCLUDED_DISPLAY_FILES = ["uploader_record.json", "all_files_detail.json"]
@@ -94,8 +104,12 @@ def upload_xml():
             )
             file.save(f"{app.config[XML_UPLOADS]}/{file.filename}")
             xml_validate(f"{app.config[XML_UPLOADS]}/{file.filename}")
-            all_files_data = get_json_data(f"{app.config[XML_UPLOADS]}/all_files_detail.json")
-            all_files_data[file.filename] = get_file_detail(file_name=file.filename, ip_data=uploader_record_data)
+            all_files_data = get_json_data(
+                f"{app.config[XML_UPLOADS]}/all_files_detail.json"
+            )
+            all_files_data[file.filename] = get_file_detail(
+                file_name=file.filename, ip_data=uploader_record_data
+            )
             write_json(
                 filepath=f"{app.config[XML_UPLOADS]}/all_files_detail.json",
                 data=all_files_data,
@@ -147,7 +161,10 @@ def linkedin_form():
 @app.route("/id", methods=("POST", "GET"))
 def id_html_table():
     start_time = datetime.now()
-    linkedin_object = get_linkedin_object()
+    try:
+        linkedin_object = get_linkedin_object()
+    except Exception as e:
+        return render_template("public/error.html", error=e)
     company_identifier = request.form.get("company")
     company = get_company_name(input_string=company_identifier)
     df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
@@ -172,7 +189,10 @@ def id_html_table():
 @app.route("/posts", methods=("POST", "GET"))
 def posts_html_table():
     start_time = datetime.now()
-    linkedin_object = get_linkedin_object()
+    try:
+        linkedin_object = get_linkedin_object()
+    except Exception as e:
+        return render_template("public/error.html", error=e)
     company_identifier = request.form.get("company")
     company = get_company_name(input_string=company_identifier)
     company_updates = get_updates(linkedin_object=linkedin_object, company_name=company)
@@ -210,7 +230,10 @@ def posts_html_table():
 
 @app.route("/compare", methods=("POST", "GET"))
 def compare_engagements():
-    linkedin_object = get_linkedin_object()
+    try:
+        linkedin_object = get_linkedin_object()
+    except Exception as e:
+        return render_template("public/error.html", error=e)
     companies = request.form.get("company").split(",")
     print(companies)
     if type(companies) is not list or len(companies) == 0:

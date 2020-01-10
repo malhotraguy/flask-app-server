@@ -36,6 +36,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     LINKID,
     UTM,
     EXIT,
+    POSTS_MAX_RESULT,
 )
 
 # from linkedin_tool_helpers import get_company_name, get_linkedin_object
@@ -193,7 +194,9 @@ def print_linkedin_post_data(item_number, item):
 
 def get_updates(linkedin_object, company_name):
     try:
-        updates = linkedin_object.get_company_updates(company_name, results=[])
+        updates = linkedin_object.get_company_updates(
+            company_name, max_results=POSTS_MAX_RESULT, results=[]
+        )
     except KeyError:
         print(f"No posts has been retrieved for: {company_name}")
         print("=" * 160)

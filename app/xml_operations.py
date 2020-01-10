@@ -51,3 +51,4 @@ def xml_validate(file_path):
                 os.remove(file_path)
     else:
         print(f"{file_path} doesnt exist.", file=sys.stderr)
+
