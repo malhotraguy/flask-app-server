@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 import pandas as pd
-from flask import request, render_template, redirect, flash, url_for, abort
+from flask import request, render_template, redirect, flash, url_for, abort, send_file
 from flask_cors import CORS
 
 from app import app
@@ -27,10 +27,13 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers imp
 
 CORS(app)
 
+FILE_DIRECTORY = os.path.realpath(__file__)
+PARENT_DIRECTORY_NAME = os.path.dirname(os.path.dirname(FILE_DIRECTORY))
+
 XML_UPLOADS = "XML_UPLOADS"
 ALLOWED_FILE_EXTENSIONS = "ALLOWED_FILE_EXTENSIONS"
 EXCLUDED_DISPLAY_FILES = ["uploader_record.json", "all_files_detail.json"]
-app.config[XML_UPLOADS] = "./output"
+app.config[XML_UPLOADS] = f"{PARENT_DIRECTORY_NAME}/output"
 app.config[ALLOWED_FILE_EXTENSIONS] = [".XML"]
 
 
@@ -73,9 +76,7 @@ def homepage():
 
 @app.route("/xml-file/<file_name>", methods=["GET"])
 def xml_display(file_name):
-    with open(f"{app.config[XML_UPLOADS]}/{file_name}") as file:
-        content = file.read()
-    return content
+    return send_file(f"{app.config[XML_UPLOADS]}/{file_name}")
 
 
 @app.route("/upload-xml", methods=["GET", "POST"])
@@ -132,7 +133,7 @@ def render_all_pages():
     directory_list = os.listdir(app.config[XML_UPLOADS])
     if len(directory_list) < 0:
         flash(
-            message="""<h1>No file is uploaded to output yet</h1>""", category="error",
+            message="""<h1>No file is uploaded to output yet</h1>""", category="error"
         )
         return """<h1>No file is uploaded to output yet</h1>"""
     ip_data = get_json_data(f"{app.config[XML_UPLOADS]}/uploader_record.json")
