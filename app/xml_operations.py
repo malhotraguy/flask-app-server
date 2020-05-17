@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 import time
@@ -12,11 +13,38 @@ from flask import flash
 defuse_stdlib()  # Calling defusedxml.defuse_stdlib to patch known xml security vulnerabilities
 
 
+def get_logger(name):
+    """
+    Function to initialize the logger
+    :param name: Name of the module in which logger has to be initialized
+    :return:
+    """
+    # Gets or creates a logger
+    logger = logging.getLogger(name)
+
+    # set log level
+    logger.setLevel(logging.DEBUG)
+
+    # define  handler and set formatter
+    stream_handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+        "%(asctime)s:%(levelname)s-[%(filename)s:%(lineno)d]:%(message)s"
+    )
+    stream_handler.setFormatter(formatter)
+
+    # add file handler to logger
+    logger.addHandler(stream_handler)
+    return logger
+
+
+LOGGER = get_logger(__name__)
+
+
 def get_links_count(file_path):
     try:
         tree = ET.parse(file_path)
     except ET.ParseError as pe:
-        print(f"For File:{file_path} Error:{pe}")
+        LOGGER.warning(f"For File:{file_path} Error:{pe}")
         return f"{type(pe).__name__}: {str(pe)}"
     # get root element
     root = tree.getroot()
@@ -44,11 +72,11 @@ def xml_validate(file_path):
         try:
             parsefile(file_path)
             flash(message="File Uploaded successfully", category="info")
+            return True
         except SAXParseException as e:
             flash(message=f"File removed because : {str(e)}", category="error")
-            error_type = str(e).split(sep=" ", maxsplit=1)[1]
-            if error_type == "syntax error":
-                os.remove(file_path)
+            os.remove(file_path)
+            return False
     else:
-        print(f"{file_path} doesnt exist.", file=sys.stderr)
-
+        LOGGER.warning(f"{file_path} doesnt exist.", file=sys.stderr)
+        return False

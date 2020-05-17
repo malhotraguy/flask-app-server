@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 from datetime import datetime
 
 import pandas as pd
@@ -8,7 +7,13 @@ from flask import request, render_template, redirect, flash, url_for, abort, sen
 from flask_cors import CORS
 
 from app import app
-from app.xml_operations import get_size, get_mod_date, get_links_count, xml_validate
+from app.xml_operations import (
+    get_size,
+    get_mod_date,
+    get_links_count,
+    xml_validate,
+    get_logger,
+)
 from brand_setup_tools.linkedin_id_and_posts_extractor.get_posts import (
     get_updates,
     get_post_link_and_social_activity,
@@ -35,11 +40,12 @@ ALLOWED_FILE_EXTENSIONS = "ALLOWED_FILE_EXTENSIONS"
 EXCLUDED_DISPLAY_FILES = ["uploader_record.json", "all_files_detail.json"]
 app.config[XML_UPLOADS] = f"{PARENT_DIRECTORY_NAME}/output"
 app.config[ALLOWED_FILE_EXTENSIONS] = [".XML"]
+LOGGER = get_logger(__name__)
 
 
 def write_json(filepath, data={}):
     with open(filepath, "w+") as outfile:
-        json.dump(data, outfile)
+        json.dump(data, outfile, indent=4)
 
 
 def get_json_data(filepath=f"{app.config[XML_UPLOADS]}/uploader_record.json"):
@@ -76,17 +82,20 @@ def homepage():
 
 @app.route("/xml-file/<file_name>", methods=["GET"])
 def xml_display(file_name):
-    return send_file(f"{app.config[XML_UPLOADS]}/{file_name}")
+    try:
+        return send_file(f"{app.config[XML_UPLOADS]}/{file_name}")
+    except FileNotFoundError:
+        return f"File: {file_name} Not Found"
 
 
 @app.route("/upload-xml", methods=["GET", "POST"])
 def upload_xml():
     if request.method == "POST":
         if request.files:
-            print(f"request.files={request.files}")
+            LOGGER.info(f"request.files={request.files}")
             file = request.files["file"]
             if file.filename == "":
-                print("No Filename", file=sys.stderr)
+                LOGGER.critical("No Filename")
                 flash(message="No File Selected", category="error")
                 return redirect(location=request.url, code=302)
             if not allowed_file(file.filename):
@@ -94,27 +103,31 @@ def upload_xml():
                 return redirect(location=request.url, code=302)
             if not os.path.isdir(app.config[XML_UPLOADS]):
                 os.mkdir(app.config[XML_UPLOADS], mode=0o777)
-            ip_visitor = request.environ.get("HTTP_X_REAL_IP", request.remote_addr)
-            uploader_record_data = get_json_data(
-                f"{app.config[XML_UPLOADS]}/uploader_record.json"
-            )
-            uploader_record_data[file.filename] = ip_visitor
-            write_json(
-                data=uploader_record_data,
-                filepath=f"{app.config[XML_UPLOADS]}/uploader_record.json",
-            )
             file.save(f"{app.config[XML_UPLOADS]}/{file.filename}")
-            xml_validate(f"{app.config[XML_UPLOADS]}/{file.filename}")
-            all_files_data = get_json_data(
-                f"{app.config[XML_UPLOADS]}/all_files_detail.json"
+            xml_file_validated = xml_validate(
+                f"{app.config[XML_UPLOADS]}/{file.filename}"
             )
-            all_files_data[file.filename] = get_file_detail(
-                file_name=file.filename, ip_data=uploader_record_data
-            )
-            write_json(
-                filepath=f"{app.config[XML_UPLOADS]}/all_files_detail.json",
-                data=all_files_data,
-            )
+            if xml_file_validated:
+                ip_visitor = request.environ.get("HTTP_X_REAL_IP", request.remote_addr)
+                uploader_record_data = get_json_data(
+                    f"{app.config[XML_UPLOADS]}/uploader_record.json"
+                )
+                uploader_record_data[file.filename] = ip_visitor
+                write_json(
+                    data=uploader_record_data,
+                    filepath=f"{app.config[XML_UPLOADS]}/uploader_record.json",
+                )
+
+                all_files_data = get_json_data(
+                    f"{app.config[XML_UPLOADS]}/all_files_detail.json"
+                )
+                all_files_data[file.filename] = get_file_detail(
+                    file_name=file.filename, ip_data=uploader_record_data
+                )
+                write_json(
+                    filepath=f"{app.config[XML_UPLOADS]}/all_files_detail.json",
+                    data=all_files_data,
+                )
             return redirect(location=request.url, code=302)
 
     elif request.method == "GET":
@@ -131,11 +144,13 @@ def render_all_pages():
     if not os.path.isdir(app.config[XML_UPLOADS]):
         return """<h1>There is no output folder. Upload the files</h1>"""
     directory_list = os.listdir(app.config[XML_UPLOADS])
-    if len(directory_list) < 0:
+    number_of_xml_files = len(directory_list) - len(EXCLUDED_DISPLAY_FILES)
+    if number_of_xml_files < 0:
         flash(
             message="""<h1>No file is uploaded to output yet</h1>""", category="error"
         )
         return """<h1>No file is uploaded to output yet</h1>"""
+    LOGGER.info(f"Total number of xml files: {number_of_xml_files}")
     ip_data = get_json_data(f"{app.config[XML_UPLOADS]}/uploader_record.json")
     display_data = {}
     all_files_detail = get_json_data(f"{app.config[XML_UPLOADS]}/all_files_detail.json")
@@ -144,6 +159,11 @@ def render_all_pages():
             continue
         file_detail = all_files_detail.get(file_name)
         if file_detail is None:
+            xml_file_validated = xml_validate(
+                file_path=f"{app.config[XML_UPLOADS]}/{file_name}"
+            )
+            if not xml_file_validated:
+                continue
             file_detail = get_file_detail(file_name=file_name, ip_data=ip_data)
             all_files_detail.update({file_name: file_detail})
         display_data.update({file_name: file_detail})
@@ -169,8 +189,7 @@ def id_html_table():
     company_identifier = request.form.get("company")
     company = get_company_name(input_string=company_identifier)
     df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
-    print(f"Time taken to fetch the result= {datetime.now() - start_time}")
-    print("=" * 130)
+    LOGGER.debug(f"Time taken to fetch the result= {datetime.now() - start_time}")
     return render_template(
         "public/simple.html",
         page_title=f"IDs for {company}",
@@ -211,8 +230,7 @@ def posts_html_table():
             },
             ignore_index=True,
         )
-    print(f"Time taken to fetch the result= {datetime.now() - start_time}")
-    print("=" * 130)
+    LOGGER.debug(f"Time taken to fetch the result= {datetime.now() - start_time}")
     return render_template(
         "public/simple.html",
         page_title=f"Posts for {company}",
@@ -236,7 +254,7 @@ def compare_engagements():
     except Exception as e:
         return render_template("public/error.html", error=e)
     companies = request.form.get("company").split(",")
-    print(companies)
+    LOGGER.info(companies)
     if type(companies) is not list or len(companies) == 0:
         abort(400, "Check the arguments passed with 'company' parameter of the URL")
     df_engagements = pd.DataFrame()
