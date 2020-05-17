@@ -52,7 +52,7 @@ def get_json_data(filepath=f"{app.config[XML_UPLOADS]}/uploader_record.json"):
     if not os.path.isfile(filepath):
         write_json(data={}, filepath=filepath)
     with open(filepath) as file:
-        data = json.loads(file.read())
+        data = json.load(file)
     return data
 
 
@@ -85,7 +85,7 @@ def xml_display(file_name):
     try:
         return send_file(f"{app.config[XML_UPLOADS]}/{file_name}")
     except FileNotFoundError:
-        return f"File: {file_name} Not Found"
+        return f"<h1>File: {file_name} not found !!</h1>"
 
 
 @app.route("/upload-xml", methods=["GET", "POST"])
