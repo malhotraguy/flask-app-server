@@ -151,8 +151,10 @@ def render_all_pages():
         )
         return """<h1>No file is uploaded to output yet</h1>"""
     LOGGER.info(f"Total number of xml files: {number_of_xml_files}")
+    LOGGER.info("Reading upload_record.json")
     ip_data = get_json_data(f"{app.config[XML_UPLOADS]}/uploader_record.json")
     display_data = {}
+    LOGGER.info("Reading all_files_detail.json")
     all_files_detail = get_json_data(f"{app.config[XML_UPLOADS]}/all_files_detail.json")
     for file_name in directory_list:
         if file_name in EXCLUDED_DISPLAY_FILES:
