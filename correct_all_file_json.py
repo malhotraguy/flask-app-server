@@ -28,9 +28,12 @@ def correct_all_file_json():
         file_detail = all_files_detail.get(file_name)
         if file_detail is None:
             LOGGER.info(f"No file detail for file: {file_name}")
-            xml_file_validated = xml_validate(
-                file_path=f"{app.config[XML_UPLOADS]}/{file_name}"
-            )
+            try:
+                xml_file_validated = xml_validate(
+                    file_path=f"{app.config[XML_UPLOADS]}/{file_name}"
+                )
+            except RuntimeError:
+                xml_file_validated = False
             if not xml_file_validated:
                 LOGGER.info(f"Removed the file: {file_name}")
                 continue
