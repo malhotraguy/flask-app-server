@@ -161,13 +161,16 @@ def render_all_pages():
             continue
         file_detail = all_files_detail.get(file_name)
         if file_detail is None:
+            LOGGER.info(f"No file detail for file: {file_name}")
             xml_file_validated = xml_validate(
                 file_path=f"{app.config[XML_UPLOADS]}/{file_name}"
             )
             if not xml_file_validated:
+                LOGGER.info(f"Removed the file: {file_name}")
                 continue
             file_detail = get_file_detail(file_name=file_name, ip_data=ip_data)
             all_files_detail.update({file_name: file_detail})
+            LOGGER.info(f"Added new detail in all_file_json for file: {file_name}")
         display_data.update({file_name: file_detail})
     write_json(
         filepath=f"{app.config[XML_UPLOADS]}/all_files_detail.json",
