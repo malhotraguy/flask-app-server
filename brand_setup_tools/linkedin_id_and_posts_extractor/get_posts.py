@@ -19,10 +19,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     SHAREFEED_HYPERLINK,
     ARTICLE,
     URL,
-    RESOLVED_URL,
     HTML,
-    VALUES,
-    TEXT,
     VALUE,
     ATTRIBUTES,
     SUMMARY,
@@ -37,6 +34,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     UTM,
     EXIT,
     POSTS_MAX_RESULT,
+    RESHAREUPDATE,
 )
 
 # from linkedin_tool_helpers import get_company_name, get_linkedin_object
@@ -55,6 +53,9 @@ def refine_url(url):
         return url
     if UTM in url:
         url = url.split(UTM, 1)[0]
+        return url
+    if "?id=" in url:
+        url = url.split("?id=", 1)[0]
         return url
     return url
 
@@ -79,24 +80,19 @@ def url_from_string(string):
         string,
     )
     resolved_urls_list = [resolve_url(url) for url in urls]
-    if not resolved_urls_list:
-        return None
     return resolved_urls_list
 
 
 def get_article_url(item):
-    if ARTICLE in item.get(ARTICLE, {}):
-        if URL in item[ARTICLE][ARTICLE]:
-            return item[ARTICLE][ARTICLE][URL]
+    action_target_url = item.get("navigationContext", {}).get("actionTarget")
+    if action_target_url:
+        return resolve_url(action_target_url)
     else:
-        if RESOLVED_URL in item:
-            print(f"resolvedUrl={item[RESOLVED_URL]}")
-        if URL in item:
-            print(f"url in post={item[URL]}")
-            return resolve_url(item[URL])
+        return None
 
 
 def get_video_url(item):
+    # ToDo old function, not used yet in new version
     if ARTICLE not in item.get(ARTICLE, {}):
         print("url not present")
         pprint(item)
@@ -105,21 +101,18 @@ def get_video_url(item):
         return item[ARTICLE][ARTICLE][URL]
 
 
-def get_url_from_text_content(item):
-    if VALUES not in item.get(TEXT, {}):
-        return None
-    values = item[TEXT][VALUES]
+def get_url_from_text_content(feed_item):
+    string_value = feed_item.get("commentary", {}).get("text", {}).get("text")
     extracted_urls = []
-    for string_value in values:
-        url_list = url_from_string(string_value.get(VALUE))
-        if url_list:
-            extracted_urls.extend(url_list)
-    if len(extracted_urls) == 1 and type(extracted_urls) == list:
-        extracted_urls = extracted_urls[0]
+    if string_value:
+        extracted_urls = url_from_string(string_value)
+        if len(extracted_urls) == 1 and type(extracted_urls) == list:
+            extracted_urls = extracted_urls[0]
     return extracted_urls
 
 
 def get_feed_topic_summary_url(item):
+    # ToDo old function, not used yet in new version
     if ATTRIBUTES not in item.get(SUMMARY, {}):
         return None
     for attribute in item[SUMMARY][ATTRIBUTES]:
@@ -128,6 +121,7 @@ def get_feed_topic_summary_url(item):
 
 
 def get_reshare_url(item):
+    # ToDo old function, not used yet in new version
     if ORIGINAL_UPDATE in item:
         print("=" * 30, "Reshare", "=" * 30)
         get_url(item=item[ORIGINAL_UPDATE])
@@ -136,41 +130,54 @@ def get_reshare_url(item):
         pprint(item)
 
 
-def get_url(item):
-    if SHAREUPDATE in item.get(VALUE):
-        if CONTENT not in item.get(VALUE)[SHAREUPDATE]:
-            pprint(item.get(VALUE)[SHAREUPDATE])
-            raise Exception(
-                "content keyword is missing in item.get('value')['com.linkedin.voyager.feed.ShareUpdate']"
-            )
-        share_update_content = item.get(VALUE)[SHAREUPDATE][CONTENT]
-        # keys_list = [key for key in share_update_content]
-        # print(keys_list)
+def extract_url_from_components(shared_update):
+    if CONTENT in shared_update:
+        share_update_content = shared_update[CONTENT]
+        share_update_content_key = list(share_update_content.keys())
+        print(share_update_content_key)
         if SHAREIMAGE in share_update_content:
-            url = get_url_from_text_content(item=share_update_content[SHAREIMAGE])
+            url = get_url_from_text_content(feed_item=shared_update)
 
         elif SHAREARTICLE in share_update_content:
             url = get_article_url(item=share_update_content[SHAREARTICLE])
 
         elif SHAREVIDEO in share_update_content:
-            url = get_video_url(item=share_update_content[SHAREVIDEO])
+            url = get_url_from_text_content(feed_item=shared_update)
 
         elif SHARETEXT in share_update_content:
-            url = get_url_from_text_content(item=share_update_content[SHARETEXT])
+            # ToDo old version, not found yet in new version
+            url = get_url_from_text_content(feed_item=shared_update)
 
         elif SHAREFEED in share_update_content:
+            # ToDo old version, not found yet in new version
             url = get_feed_topic_summary_url(item=share_update_content[SHAREFEED])
 
         elif SHARECOLLECTION in share_update_content:
-            url = get_url_from_text_content(item=share_update_content[SHARECOLLECTION])
+            # ToDo old version, not found yet in new version
+            url = get_url_from_text_content(feed_item=shared_update)
         else:
             pprint(share_update_content)
             raise Exception("Type not defined by Tool")
         shared_url = refine_url(url=url)
-        print(f" Original Shared Url={shared_url}")
+        return shared_url
+
+
+def get_url(item):
+    if SHAREUPDATE in item.get(VALUE):
+        shared_update = item.get(VALUE)[SHAREUPDATE]
+        if CONTENT in shared_update:
+            shared_url = extract_url_from_components(shared_update=shared_update)
+
+        elif RESHAREUPDATE in shared_update:
+            shared_url = extract_url_from_components(
+                shared_update=shared_update[RESHAREUPDATE]
+            )
+        else:
+            shared_url = get_url_from_text_content(feed_item=shared_update)
         return shared_url
 
     elif RESHARE in item.get(VALUE):
+        # ToDo old version, not found yet in new version
         get_reshare_url(item=item.get(VALUE)[RESHARE])
     else:
         pprint(item)
@@ -179,7 +186,12 @@ def get_url(item):
 
 def get_post_link_and_social_activity(item):
     linkedin_post_link = item.get(PERMALINK)
-    total_social_activity_counts = item.get(SOCIAL_DETAIL, {}).get(SOCIAL_COUNTS, {})
+    total_social_activity_counts = (
+        item.get(VALUE, {})
+        .get(SHAREUPDATE, {})
+        .get(SOCIAL_DETAIL, {})
+        .get(SOCIAL_COUNTS, {})
+    )
     likes = total_social_activity_counts.get(NUM_LIKES)
     return linkedin_post_link, likes
 
@@ -189,7 +201,8 @@ def print_linkedin_post_data(item_number, item):
     print("-" * 150)
     print(f"{item_number})\n Linkedin Post link: {linkedin_post_link}")
     print(f" Total Likes={total_likes}")
-    get_url(item=item)
+    shared_url = get_url(item=item)
+    print(f" Original Shared Url={shared_url}")
 
 
 def get_updates(linkedin_object, company_name):
