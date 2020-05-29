@@ -1,6 +1,8 @@
 import unittest
 
-from linkedin_tool_helpers import get_company_name
+from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
+    get_company_name,
+)
 
 
 class TestSuiteLinkedinId(unittest.TestCase):

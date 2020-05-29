@@ -1,167 +1,39 @@
-{
-    "urn": "urn:li:activity:6570409121835814912",
-    "entityUrn": "urn:li:fs_feedUpdate:(COMPANY_FEED,urn:li:activity:6570409121835814912)",
-    "id": "activity:6570409121835814912",
-    "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6570409121835814912",
-    "tracking": {
-        "trackingId": "vBBjXznPEmhNeCcY87U1RQ=="
-    },
-    "value": {
-        "com.linkedin.voyager.feed.ShareUpdate": {
-            "actor": {
-                "com.linkedin.voyager.feed.CompanyActor": {
-                    "urn": "urn:li:company:2525300",
-                    "followingInfo": {
-                        "entityUrn": "urn:li:fs_followingInfo:urn:li:company:2525300",
-                        "following": false,
-                        "followerCount": 1144967
-                    },
-                    "miniCompany": {
-                        "objectUrn": "urn:li:company:2525300",
-                        "entityUrn": "urn:li:fs_miniCompany:2525300",
-                        "name": "KPMG",
-                        "showcase": false,
-                        "active": true,
-                        "logo": {
-                            "com.linkedin.common.VectorImage": {
-                                "artifacts": [
-                                    {
-                                        "width": 200,
-                                        "fileIdentifyingUrlPathSegment": "200_200/0?e=1574294400&v=beta&t=dY5NiXphIPFdLsbUYLODIVMIXwfI4woKxUMPL3uiz58",
-                                        "expiresAt": 1574294400000,
-                                        "height": 200
-                                    },
-                                    {
-                                        "width": 100,
-                                        "fileIdentifyingUrlPathSegment": "100_100/0?e=1574294400&v=beta&t=NSH7JyDHeXVEQ5RBaWxhi5N232f0tDPyyvUpvkou7dk",
-                                        "expiresAt": 1574294400000,
-                                        "height": 100
-                                    },
-                                    {
-                                        "width": 400,
-                                        "fileIdentifyingUrlPathSegment": "400_400/0?e=1574294400&v=beta&t=BZVCD8tvijxN8V53sQ9OlOxEXpbqG2zZAyOgmSF5qOQ",
-                                        "expiresAt": 1574294400000,
-                                        "height": 400
-                                    }
-                                ],
-                                "rootUrl": "https://media.licdn.com/dms/image/C560BAQGSV3qMCbB_tw/company-logo_"
-                            }
-                        },
-                        "trackingId": "37db45KeQAmlXNhZh834Uw=="
-                    },
-                    "showFollowAction": true
-                }
-            },
-            "urn": "urn:li:activity:6570409121835814912",
-            "edited": false,
-            "shareAudience": "PUBLIC",
-            "shareUrn": "urn:li:share:6570409121487691776",
-            "createdTime": 1566507606869,
-            "actions": [
-                {
-                    "text": "Share via",
-                    "value": {
-                        "com.linkedin.voyager.feed.actions.ShareVia": {
-                            "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6570409121835814912"
-                        }
-                    }
-                },
-                {
-                    "subtext": "I don't want to see this post in my feed",
-                    "text": "Hide this post",
-                    "value": {
-                        "com.linkedin.voyager.feed.actions.Feedback": {}
-                    }
-                },
-                {
-                    "subtext": "This post is offensive or the account is hacked",
-                    "text": "Report this post",
-                    "value": {
-                        "com.linkedin.voyager.feed.actions.Report": {}
-                    }
-                },
-                {
-                    "subtext": "Get recommended sources to follow",
-                    "text": "Improve my feed",
-                    "value": {
-                        "com.linkedin.voyager.feed.actions.Survey": {}
-                    }
-                }
-            ],
-            "content": {
-                "com.linkedin.voyager.feed.ShareArticle": {
-                    "urn": "urn:li:article:8498037784042884274",
-                    "image": {
-                        "com.linkedin.voyager.common.MediaProxyImage": {
-                            "originalHeight": 630,
-                            "url": "https://media-exp1.licdn.com/media-proxy/ext?w=1200&h=630&f=pj&hash=n25pa%2BcbJ%2BgsTDrT8c6zjvvvCPk%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6rgAgf1g9v676MqgCz60lTQIzITWTwBjrxuojXfz-hZp6CKOX050IUeC0IjwQ1YLf5HmT8Sszgf9OxKsEx08i7cY23ZxVLYBJ7h2hM59YpNgwqsdqsFey_ai1ciO9XYzu4Pa2mdVcxDiwj9OOHPsjbOAgV2FvCWt3jV50XDucsptIKjVRFoA",
-                            "originalWidth": 1200
-                        }
-                    },
-                    "articleType": "REGULAR",
-                    "subtitle": "home.kpmg",
-                    "description": "As driverless cars and MaaS threaten traditional auto insurance, insurers may turn to insurtechs to navigate mobility disruption.",
-                    "resolvedUrl": "https://home.kpmg/xx/en/home/insights/2019/07/partnering-with-insurtechs-to-face-latest-mobility-twist-fs.html",
-                    "text": {
-                        "values": [
-                            {
-                                "value": "How can insurers and insurtechs partner together to meet mobility disruption head on? Read our 5 best practices to empower innovation and set the stage for a successful partnership. https://social.kpmg/vn2fd "
-                            }
-                        ]
-                    },
-                    "title": "How insurers are facing the latest mobility twist",
-                    "url": "https://social.kpmg/vn2fd",
-                    "article": {
-                        "saveAction": {
-                            "entityUrn": "urn:li:fs_saveAction:(SAVE,urn:li:article:8498037784042884274)",
-                            "saved": false
-                        },
-                        "entityUrn": "urn:li:fs_feedMiniArticle:urn:li:article:8498037784042884274",
-                        "saved": false,
-                        "article": {
-                            "entityUrn": "urn:li:fs_miniArticle:8498037784042884274",
-                            "title": "How insurers are facing the latest mobility twist",
-                            "url": "https://home.kpmg/xx/en/home/insights/2019/07/partnering-with-insurtechs-to-face-latest-mobility-twist-fs.html"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "isSponsored": false,
-    "socialDetail": {
-        "urn": "urn:li:activity:6570409121835814912",
-        "threadId": "activity:6570409121835814912",
-        "totalSocialActivityCounts": {
-            "socialDetailEntityUrn": "urn:li:fs_socialDetail:urn:li:activity:6570409121835814912",
-            "urn": "urn:li:activity:6570409121835814912",
-            "numComments": 0,
-            "entityUrn": "urn:li:fs_socialActivityCounts:urn:li:activity:6570409121835814912",
-            "numLikes": 3,
-            "liked": false
-        },
-        "comments": {
-            "elements": [],
-            "paging": {
-                "total": 0,
-                "count": 0,
-                "start": 0,
-                "links": []
-            }
-        },
-        "entityUrn": "urn:li:fs_socialDetail:urn:li:activity:6570409121835814912",
-        "commentingDisabled": false,
-        "liked": false,
-        "showShareButton": false,
-        "totalShares": 0,
-        "likes": {
-            "elements": [],
-            "paging": {
-                "total": 3,
-                "start": 0,
-                "count": 0,
-                "links": []
-            }
-        }
-    }
-}
+{"entityUrn": "urn:li:fs_feedUpdate:(V2&COMPANY_FEED,urn:li:activity:6668958869974257664)",
+ "id": "activity:6668958869974257664",
+ "isSponsored": "False",
+ "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:6668958869974257664",
+ "tracking": {"trackingId": "eWRABNas1W/IsgOIBzsI1Q=="},
+ "urn": "urn:li:activity:6668958869974257664",
+ "value": {"com.linkedin.voyager.feed.render.UpdateV2": {
+                                                         "entityUrn": "urn:li:fs_updateV2:(urn:li:activity:6668958869974257664,COMPANY_FEED,EMPTY,DEFAULT,False)",
+                                                         "socialDetail": {"commentingDisabled": "False",
+                                                                          "comments": {"elements": [],
+                                                                                       "paging": {"count": 0,
+                                                                                                  "links": [],
+                                                                                                  "start": 0,
+                                                                                                  "total": 0}},
+                                                                          "entityUrn": "urn:li:fs_socialDetail:urn:li:activity:6668958869974257664",
+                                                                          "liked": "False",
+                                                                          "likes": {"elements": [],
+                                                                                    "paging": {"count": 0,
+                                                                                               "links": [],
+                                                                                               "start": 0,
+                                                                                               "total": 205}},
+                                                                          "showReplyPrivatelyButton": "False",
+                                                                          "showShareButton": "True",
+                                                                          "threadId": "activity:6668958869974257664",
+                                                                          "totalShares": 0,
+                                                                          "totalSocialActivityCounts": {"entityUrn": "urn:li:fs_socialActivityCounts:urn:li:activity:6668958869974257664",
+                                                                                                        "liked": "False",
+                                                                                                        "numComments": 0,
+                                                                                                        "numLikes": 205,
+                                                                                                        "reactionTypeCounts": [{"count": 203,
+                                                                                                                                "reactionType": "LIKE"},
+                                                                                                                               {"count": 1,
+                                                                                                                                "reactionType": "PRAISE"},
+                                                                                                                               {"count": 1,
+                                                                                                                                "reactionType": "INTEREST"}],
+                                                                                                        "socialDetailEntityUrn": "urn:li:fs_socialDetail:urn:li:activity:6668958869974257664",
+                                                                                                        "urn": "urn:li:activity:6668958869974257664"},
+                                                                          "urn": "urn:li:activity:6668958869974257664"}
+                                                         }}}

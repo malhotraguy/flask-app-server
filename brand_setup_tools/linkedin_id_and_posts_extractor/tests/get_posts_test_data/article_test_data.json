@@ -1,67 +1,44 @@
-[{
-  "urn": "urn:li:article:7263927319176584032",
-  "image": {
-    "com.linkedin.voyager.common.MediaProxyImage": {
-      "originalHeight": 500,
-      "url": "https://media-exp1.licdn.com/media-proxy/ext?w=1000&h=500&f=pj&hash=OCSJMl00p2xwVa%2F%2FEx7zRuROLuw%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6jnhxUxwoj9a3PrkC9q09TUZLPRzPQTifc79f2MyO3Z5KZK_fyug5JJTkD5l1vLrj9AyXjZJW_L4LpfNR1npWTJpbkNFVSPk9m0j0fqYMdaFx2k5u0DOz5bi9CnL4IPHbtZem_KgNuWn1mrbOecNaIeQ1X2EOYQoXiFsFVTLJx48dIxl1B-p2ARultn8k46zk7mA75rpqsZmhK-Mj8DhjoX1JkDGHEb65HuPqF0GTYwAjbyEuG84rJB_GmSw",
-      "originalWidth": 1000
-    }
-  },
-  "articleType": "REGULAR",
-  "subtitle": "eventbrite.co.uk",
-  "description": "***Please note that at this stage, you're registering your interest in this event\u00a0only. We will contact you on\u00a026th June\u00a0to confirm your ticket and pass along details of the day*** Do you want to help #BuildTheBBC? \u00a0 BBC Design + Engineering\u00a0is...",
-  "resolvedUrl": "https://www.eventbrite.co.uk/e/do-you-want-to-help-buildthebbc-an-evening-of-tech-talks-networking-and-pizza-tickets-63047946104",
-  "text": {
-    "values": [
-      {
-        "value": "BBC Design + Engineering is hosting a networking and recruitment evening for all engineers, innovators, analysts, product people and anyone aspiring to be in the world of technology. From beginner level to managers and all the way to guru-level, we'd love to tell you about all of the exciting things we're doing in our near 100-year-old technology company. \n\nPlease contact Darren Read (Darren.read@bbc.co.uk) for more information. \n\nPlease register your interest to attend. Due to limited availability tickets will be issued by invitation only: https://lnkd.in/gWWs-XE\n"
-      }
-    ]
-  },
-  "title": "Do you want to help #BuildTheBBC? - An evening of tech talks, networking and pizza!",
-  "url": "https://www.eventbrite.co.uk/e/do-you-want-to-help-buildthebbc-an-evening-of-tech-talks-networking-and-pizza-tickets-63047946104",
-  "article": {
-    "saveAction": {
-      "entityUrn": "urn:li:fs_saveAction:(SAVE,urn:li:article:7263927319176584032)",
-      "saved": false
-    },
-    "entityUrn": "urn:li:fs_feedMiniArticle:urn:li:article:7263927319176584032",
-    "saved": false,
-    "article": {
-      "entityUrn": "urn:li:fs_miniArticle:7263927319176584032",
-      "title": "Do you want to help #BuildTheBBC? - An evening of tech talks, networking and pizza!",
-      "url": "https://www.eventbrite.co.uk/e/do-you-want-to-help-buildthebbc-an-evening-of-tech-talks-networking-and-pizza-tickets-63047946104"
-    }
-  }
-},
-{
-    "urn": "urn:li:article:-1",
-    "image": {
-        "com.linkedin.voyager.common.MediaProxyImage": {
-            "originalHeight": 627,
-            "url": "https://media-exp1.licdn.com/media-proxy/ext?w=1200&h=627&f=pj&hash=tu5N%2BCTXMJtXrcOjp4kKX230TSc%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R65gwkZxhJs4b2SqFujqlRXV4vSCWzjRXb1p8qDaHX2eM7Cf7Glozl5BnNDw1V2EIz3E2mwTvzActS0KIgIlsHldsbkNlQFJElkhzwCuIY-blR84ceiSLqjMnZKgrsIPXa8ZfS4MAdrXXBnrLnHJ5ff",
-            "originalWidth": 1200
-        }
-    },
-    "articleType": "REGULAR",
-    "subtitle": "deloi.tt",
-    "description": "This report offers an understanding of the end-users' needs and helps mining executives get a better understanding on how they can engage mining leaders, frontline workers and external stakeholders such as unions in driving the adoption of wearables.",
-    "resolvedUrl": "https://deloi.tt/30R0UTj",
-    "text": {
-        "values": [
-            {
-                "value": "Advanced worker safety, increased productivity and well-being - Find out how "
-            },
-            {
-                "value": "#wearable"
-            },
-            {
-                "value": " technologies are transforming the mining industry. Read today https://deloi.tt/30R0UTj"
-            }
-        ]
-    },
-    "title": "Future of mining with wearables | Deloitte Canada",
-    "url": "https://deloi.tt/30R0UTj"
-}
+[{"largeImage": {"accessibilityTextAttributes": [],
+                "attributes": [{"sourceType": "VECTOR",
+                                "vectorImage": {"artifacts": [{"expiresAt": 1590163200000,
+                                                               "fileIdentifyingUrlPathSegment": "800/0?e=1590163200&v=beta&t=w3vsVO5X2Rvzj5S5yuGewNbkWXXQUrkSKE0DNabLZAc",
+                                                               "height": 545,
+                                                               "width": 800},
+                                                              {"expiresAt": 1590163200000,
+                                                               "fileIdentifyingUrlPathSegment": "1280_800/0?e=1590163200&v=beta&t=RsrU_tbLMgWskYCGhljnOHkz_MY_NlfsiE0muhLKeXA",
+                                                               "height": 800,
+                                                               "width": 1173}],
+                                                "rootUrl": "https://media-exp1.licdn.com/dms/image/sync/C4E27AQFTvnckKDLJcA/articleshare-shrink_"}}]},
+ "navigationContext": {"accessibilityText": "Open article: How to Transform your Content Marketing with Artificial Intelligence by hubs.ly",
+                       "actionTarget": "https://hubs.ly/H0qsy6_0",
+                       "trackingActionType": "viewLink"},
+ "subtitle": {"text": "concured.com • 5 min read",
+              "textDirection": "USER_LOCALE"},
+ "templateType": "DEFAULT",
+ "title": {"text": "How to Transform your Content Marketing with Artificial Intelligence",
+           "textDirection": "FIRST_STRONG"},
+ "type": "EXTERNAL_FULL",
+ "urn": "urn:li:article:7048462997453159847"},
+{"largeImage": {"accessibilityTextAttributes": [],
+                "attributes": [{"sourceType": "VECTOR",
+                                "vectorImage": {"artifacts": [{"expiresAt": 1590163200000,
+                                                               "fileIdentifyingUrlPathSegment": "800/0?e=1590163200&v=beta&t=jI6qq0zJZzVdbYb-vJA0gCJHnQikKNs3pCvhwt27TNU",
+                                                               "height": 450,
+                                                               "width": 800},
+                                                              {"expiresAt": 1590163200000,
+                                                               "fileIdentifyingUrlPathSegment": "1280_800/0?e=1590163200&v=beta&t=JoixT1b--Mi2JXDLxG_VgF9bdlSvgw4EkdhNhZPazRw",
+                                                               "height": 720,
+                                                               "width": 1280}],
+                                                "rootUrl": "https://media-exp1.licdn.com/dms/image/sync/C4D27AQFkG_xWZJxWfA/articleshare-shrink_"}}]},
+ "navigationContext": {"accessibilityText": "Open article: Best Practices for a Successful Content Marketing Campaign by hubs.ly",
+                       "actionTarget": "https://hubs.ly/H0qsy6Z0",
+                       "trackingActionType": "viewLink"},
+ "subtitle": {"text": "concured.com • 7 min read",
+              "textDirection": "USER_LOCALE"},
+ "templateType": "DEFAULT",
+ "title": {"text": "Best Practices for a Successful Content Marketing Campaign",
+           "textDirection": "FIRST_STRONG"},
+ "type": "EXTERNAL_FULL",
+ "urn": "urn:li:article:7419087618187001825"}
 ]
 

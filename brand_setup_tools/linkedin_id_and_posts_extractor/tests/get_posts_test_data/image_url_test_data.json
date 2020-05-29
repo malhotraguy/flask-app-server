@@ -1,23 +1,26 @@
-{
-     "image": {
-         "com.linkedin.voyager.common.MediaProxyImage": {
-             "url": 
- "https://media-exp1.licdn.com/media-proxy/ext?w=800&h=800&f=pj&hash=ROdIFrrWYfJOCKc8VUu3DKtNj7Q%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6jnhodx1Ey9KGTqAGj6E5DQJHUA3L0CHH05IbfPWjvLM-JL7X1rUAUfHgDjQA1Ke61SDLlEI6-KoPnett4iJXnJpP5agYUbhl4j3lK6w"
-         }
-     },
-     "text": {
-         "values": [
-             {
-                 "value": "We interviewed 30 corporate and governmentorganizations to understand the end-user needs and pain points related tocorporate payments. Find out what the results were https://deloi.tt/32HCk9g"
-             },
-             {
-                 "value": "#paymentmodernization"
-             }
-         ]
-     },
-     "originalImage": {
-         "string": 
- "https://image-store.slidesharecdn.com/6e8ff7d9-24d2-47f1-8242-219877932223-large.jpeg"
-     },
-     "fileId": ""
- }
+{"actor": {"description": {"text": "4,906,278 followers",
+                           "textDirection": "USER_LOCALE"},
+           "image": {"accessibilityTextAttributes": [],
+                     "attributes": [{"sourceType": "COMPANY_LOGO"}]},
+           "name": {"attributes": [{"length": 8,
+                                    "start": 0,
+                                    "type": "COMPANY_NAME"}],
+                    "text": "Deloitte",
+                    "textDirection": "FIRST_STRONG"},
+           "navigationContext": {"accessibilityText": "View company: Deloitte",
+                                 "actionTarget": "https://www.linkedin.com/company/deloitte/?miniCompanyUrn=urn%3Ali%3Afs_miniCompany%3A1038",
+                                 "trackingActionType": "viewCompany"},
+           "subDescription": {"accessibilityText": "2 days ago",
+                              "attributes": [{"artDecoIcon": "IC_GLOBE_16DP",
+                                              "length": 1,
+                                              "start": 5,
+                                              "type": "ART_DECO_ICON"}],
+                              "text": "2d •   ",
+                              "textDirection": "USER_LOCALE"},
+           "urn": "urn:li:company:1038"},
+ "commentary": {"templateType": "DEFAULT",
+                "text": {"attributes": [{"length": 17,
+                                         "start": 25,
+                                         "type": "COMPANY_NAME"}],
+                         "text": "Deloitte is working with American Airlines to deliver critical supplies to a hard-hit area of the U.S. Together, we have provided more than 40,000 medical gowns to health care workers in New York City. #COVDI19 #ImpactEveryDay #ImpactThatMatters https://deloi.tt/3cN48xA",
+                         "textDirection": "FIRST_STRONG"}}}

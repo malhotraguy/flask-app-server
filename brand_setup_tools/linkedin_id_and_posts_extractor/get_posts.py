@@ -34,7 +34,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     UTM,
     EXIT,
     POSTS_MAX_RESULT,
-    RESHAREUPDATE,
+    RESHAREUPDATE, EXTERNALVIDEO,
 )
 
 # from linkedin_tool_helpers import get_company_name, get_linkedin_object
@@ -143,7 +143,8 @@ def extract_url_from_components(shared_update):
 
         elif SHAREVIDEO in share_update_content:
             url = get_url_from_text_content(feed_item=shared_update)
-
+        elif EXTERNALVIDEO in share_update_content:
+            url = get_article_url(item=share_update_content[EXTERNALVIDEO])
         elif SHARETEXT in share_update_content:
             # ToDo old version, not found yet in new version
             url = get_url_from_text_content(feed_item=shared_update)

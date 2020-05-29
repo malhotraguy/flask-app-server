@@ -1,42 +1,24 @@
-{
-    "urn": "urn:li:article:8364144181646183820",
-    "image": {
-        "com.linkedin.voyager.common.MediaProxyImage": {
-            "originalHeight": 627,
-            "url": "https://media-exp1.licdn.com/media-proxy/ext?w=1200&h=627&f=pj&hash=QKXxkj4X0v2psgiMfKcVwxKcC5U%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R65gwkZxhJs4b2SqFujqlRXV4vSCWzjRXb1p8qDaHX2LoewOt3d_QNNLXh4zmszfe-oCDbjFY6-edjqf90ljorgdZO3K1MAMUR73DwaupxtOx0gtszyBu2mOS8Dhr4NPHvuZu69KVgvDQ",
-            "originalWidth": 1200
-        }
-    },
-    "provider": "YouTube",
-    "subtitle": "youtube.com",
-    "description": "Decision makers need to explore new policy options to ensure Canadians have decent jobs and to secure a competitive, inclusive and innovative Canadian econom...",
-    "aspectRatio": 1.7777777777777777,
-    "text": {
-        "values": [
-            {
-                "value": "Our leaders are exploring different facets of "
-            },
-            {
-                "value": "#FutureofWork"
-            },
-            {
-                "value": " at the 2019 Global G&PS Annual Summit. Want to learn more? Catch John Hagel, Deloitte\u2019s Co-Chairman of the Center for the Edge, at Public Policy Forum\u2019s Brave New Work conference via livestream at 10:15 AM  https://deloi.tt/31RLOOK"
-            }
-        ]
-    },
-    "title": "LIVE STREAM: Brave New Work Conference | June 26, 2019",
-    "url": "https://youtube.com/watch?v=WC0wv8FBGUs",
-    "article": {
-        "saveAction": {
-            "entityUrn": "urn:li:fs_saveAction:(SAVE,urn:li:article:8364144181646183820)",
-            "saved": false
-        },
-        "entityUrn": "urn:li:fs_feedMiniArticle:urn:li:article:8364144181646183820",
-        "saved": false,
-        "article": {
-            "entityUrn": "urn:li:fs_miniArticle:8364144181646183820",
-            "title": "LIVE STREAM: Brave New Work Conference | June 26, 2019",
-            "url": "https://www.youtube.com/watch?v=WC0wv8FBGUs"
-        }
-    }
+{"actor": {"description": {"text": "4,906,123 followers",
+                           "textDirection": "USER_LOCALE"},
+           "image": {"accessibilityTextAttributes": [],
+                     "attributes": [{"miniCompany": {"active": "True",
+                                                     "entityUrn": "urn:li:fs_miniCompany:1038",
+
+                                                     "name": "Deloitte",
+                                                     "objectUrn": "urn:li:company:1038",
+                                                     "showcase": "False",
+                                                     "trackingId": "6CxKzXmLQtqoV54TwbpG0w==",
+                                                     "universalName": "deloitte"},
+                                     "sourceType": "COMPANY_LOGO"}]},
+                    "text": "Deloitte",
+                    "textDirection": "FIRST_STRONG"},
+           "navigationContext": {"accessibilityText": "View company: Deloitte",
+                                 "actionTarget": "https://www.linkedin.com/company/deloitte/?miniCompanyUrn=urn%3Ali%3Afs_miniCompany%3A1038",
+                                 "trackingActionType": "viewCompany"},
+           "subDescription": {"accessibilityText": "22 hours ago",
+
+                              "textDirection": "USER_LOCALE"},
+ "commentary": {"templateType": "DEFAULT",
+                "text": {"text": "The best leaders embrace uncertainty. Embracing the new normal of this current pandemic means confronting uncertainty head on— and building it into your decision-making.\" Hear more from Deloitte\\'s Asia Pacific Financial Advisory Leader Jiak See Ng on long-term strategy. https://deloi.tt/2LNYyPq #ImpactEveryDay",
+                         "textDirection": "FIRST_STRONG"}}
 }
