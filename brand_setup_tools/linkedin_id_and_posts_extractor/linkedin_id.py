@@ -47,15 +47,14 @@ def get_company_info(company_detail):
 def get_linkedin_id(company_name, linkedin_object):
     if company_name == EXIT:
         sys.exit("Quiting the Tool!!")
-
+    df_table = pd.DataFrame()
     try:
         company = linkedin_object.get_company(company_name)
 
     except KeyError:
         print(f"There is no Company with this name :{company_name}")
         print("=" * 160)
-        return True
-    df_table = pd.DataFrame()
+        return df_table
     if company.get(AFFILIATED_COMPANIES_RESULTS):
         for item in company[AFFILIATED_COMPANIES_RESULTS]:
             print("=" * 60)
