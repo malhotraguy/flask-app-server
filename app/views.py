@@ -194,6 +194,8 @@ def id_html_table():
     company_identifier = request.form.get("company")
     company = get_company_name(input_string=company_identifier)
     df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
+    if not df_ids:
+        return f"No id fetched for :{company_identifier}"
     LOGGER.debug(f"Time taken to fetch the result= {datetime.now() - start_time}")
     return render_template(
         "public/simple.html",
@@ -260,7 +262,7 @@ def compare_engagements():
         return render_template("public/error.html", error=e)
     companies = request.form.get("company").split(",")
     LOGGER.info(companies)
-    if type(companies) is not list or len(companies) == 0:
+    if type(companiescompanies) is not list or len(companies) == 0:
         abort(400, "Check the arguments passed with 'company' parameter of the URL")
     df_engagements = pd.DataFrame()
     for company in companies:
@@ -273,6 +275,8 @@ def compare_engagements():
             },
             ignore_index=True,
         )
+    if df_engagements.empty:
+        return f"No engagements can be fetched for: {companies}"
     return render_template(
         "public/simple.html",
         page_title=f"Comparing Engagements",
