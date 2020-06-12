@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 from linkedin_api import Linkedin  # https://github.com/tomquirk/linkedin-api
@@ -8,6 +9,30 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
 )
 
 FILE_DIRECTORY = os.path.dirname(__file__)
+
+
+def get_logger(name):
+    """
+    Function to initialize the logger
+    :param name: Name of the module in which logger has to be initialized
+    :return:
+    """
+    # Gets or creates a logger
+    logger = logging.getLogger(name)
+
+    # set log level
+    logger.setLevel(logging.DEBUG)
+
+    # define  handler and set formatter
+    stream_handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+        "%(asctime)s:%(levelname)s-[%(filename)s:%(lineno)d]:%(message)s"
+    )
+    stream_handler.setFormatter(formatter)
+
+    # add file handler to logger
+    logger.addHandler(stream_handler)
+    return logger
 
 
 def get_key(filepath=f"{FILE_DIRECTORY}/credentials.json"):
