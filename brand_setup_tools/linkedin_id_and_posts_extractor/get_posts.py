@@ -1,7 +1,6 @@
 import re
 import sys
 from pprint import pprint
-from time import sleep
 
 import requests
 from requests.exceptions import SSLError, Timeout, ConnectionError
@@ -24,7 +23,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
-    EXTERNALVIDEO, DOCUMENTFEED,
+    EXTERNALVIDEO, DOCUMENTFEED, USER_AGENT_STRING,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
@@ -32,6 +31,8 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers imp
 )
 
 LOGGER = get_logger(__name__)
+
+HEADER = {"User-Agent": USER_AGENT_STRING}
 
 
 def refine_url(url):
@@ -52,7 +53,7 @@ def refine_url(url):
 
 def resolve_url(url_link):
     try:
-        get_response = requests.get(url=url_link, timeout=40)
+        get_response = requests.get(url=url_link, timeout=40, headers=HEADER)
     except (MaxRetryError, SSLError, Timeout, ConnectionError) as e:
         return f"Cant resolve url:{url_link} because of {e}"
     final_url = get_response.url
@@ -92,8 +93,6 @@ def get_url_from_text_content(feed_item):
 def extract_url_from_components(shared_update):
     if CONTENT in shared_update:
         share_update_content = shared_update[CONTENT]
-        share_update_content_key = list(share_update_content.keys())
-        LOGGER.debug(share_update_content_key)
         if SHAREIMAGE in share_update_content:
             url = get_url_from_text_content(feed_item=shared_update)
 
@@ -108,6 +107,8 @@ def extract_url_from_components(shared_update):
             url = get_article_url(item=share_update_content[DOCUMENTFEED])
 
         else:
+            share_update_content_key = list(share_update_content.keys())
+            LOGGER.debug(share_update_content_key)
             pprint(share_update_content)
             raise Exception("Type not defined by Tool")
         shared_url = refine_url(url=url)
