@@ -7,6 +7,7 @@ SHAREIMAGE = 'com.linkedin.voyager.feed.render.ImageComponent'
 SHAREARTICLE = 'com.linkedin.voyager.feed.render.ArticleComponent'
 SHAREVIDEO = 'com.linkedin.voyager.feed.render.LinkedInVideoComponent'
 EXTERNALVIDEO = "com.linkedin.voyager.feed.render.ExternalVideoComponent"
+DOCUMENTFEED = "com.linkedin.voyager.feed.render.DocumentComponent"
 SHARETEXT = "com.linkedin.voyager.feed.ShareText"
 SHAREFEED = "com.linkedin.voyager.feed.FeedTopic"
 SHAREFEED_HYPERLINK = "com.linkedin.pemberly.text.Hyperlink"

@@ -1,6 +1,7 @@
 import re
 import sys
 from pprint import pprint
+from time import sleep
 
 import requests
 from requests.exceptions import SSLError, Timeout, ConnectionError
@@ -23,7 +24,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
-    EXTERNALVIDEO,
+    EXTERNALVIDEO, DOCUMENTFEED,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
@@ -103,6 +104,8 @@ def extract_url_from_components(shared_update):
             url = get_url_from_text_content(feed_item=shared_update)
         elif EXTERNALVIDEO in share_update_content:
             url = get_article_url(item=share_update_content[EXTERNALVIDEO])
+        elif DOCUMENTFEED in share_update_content:
+            url = get_article_url(item=share_update_content[DOCUMENTFEED])
 
         else:
             pprint(share_update_content)
