@@ -76,7 +76,7 @@ def get_article_url(item):
     if action_target_url:
         return resolve_url(action_target_url)
     else:
-        return None
+        return ""
 
 
 def get_url_from_text_content(feed_item):
