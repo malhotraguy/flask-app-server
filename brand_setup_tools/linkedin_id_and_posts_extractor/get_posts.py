@@ -8,9 +8,9 @@ from urllib3.exceptions import MaxRetryError
 
 from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     SHAREUPDATE,
-    SHAREIMAGE,
-    SHAREARTICLE,
-    SHAREVIDEO,
+    IMAGE_COMPONENT,
+    ARTICLE_COMPONENT,
+    LINKEDIN_VIDEO_COMPONENT,
     HTML,
     VALUE,
     CONTENT,
@@ -23,7 +23,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
-    EXTERNALVIDEO, DOCUMENTFEED, USER_AGENT_STRING,
+    EXTERNAL_VIDEO_COMPONENT, DOCUMENT_COMPONENT, USER_AGENT_STRING,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
@@ -93,22 +93,22 @@ def get_url_from_text_content(feed_item):
 def extract_url_from_components(shared_update):
     if CONTENT in shared_update:
         share_update_content = shared_update[CONTENT]
-        if SHAREIMAGE in share_update_content:
+        share_update_content_key = list(share_update_content.keys())
+        LOGGER.debug(share_update_content_key)
+        if IMAGE_COMPONENT in share_update_content:
             url = get_url_from_text_content(feed_item=shared_update)
 
-        elif SHAREARTICLE in share_update_content:
-            url = get_article_url(item=share_update_content[SHAREARTICLE])
+        elif ARTICLE_COMPONENT in share_update_content:
+            url = get_article_url(item=share_update_content[ARTICLE_COMPONENT])
 
-        elif SHAREVIDEO in share_update_content:
+        elif LINKEDIN_VIDEO_COMPONENT in share_update_content:
             url = get_url_from_text_content(feed_item=shared_update)
-        elif EXTERNALVIDEO in share_update_content:
-            url = get_article_url(item=share_update_content[EXTERNALVIDEO])
-        elif DOCUMENTFEED in share_update_content:
-            url = get_article_url(item=share_update_content[DOCUMENTFEED])
+        elif EXTERNAL_VIDEO_COMPONENT in share_update_content:
+            url = get_article_url(item=share_update_content[EXTERNAL_VIDEO_COMPONENT])
+        elif DOCUMENT_COMPONENT in share_update_content:
+            url = get_article_url(item=share_update_content[DOCUMENT_COMPONENT])
 
         else:
-            share_update_content_key = list(share_update_content.keys())
-            LOGGER.debug(share_update_content_key)
             pprint(share_update_content)
             raise Exception("Type not defined by Tool")
         shared_url = refine_url(url=url)
