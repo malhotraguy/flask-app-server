@@ -3,13 +3,13 @@ import sys
 from pprint import pprint
 
 import requests
-from requests.exceptions import SSLError, Timeout, ConnectionError
+from requests.exceptions import SSLError, Timeout
 from urllib3.exceptions import MaxRetryError
 
 from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     SHAREUPDATE,
-    IMAGE_COMPONENT,
-    ARTICLE_COMPONENT,
+    LINKEDIN_IMAGE_COMPONENT,
+    LINKEDIN_ARTICLE_COMPONENT,
     LINKEDIN_VIDEO_COMPONENT,
     HTML,
     VALUE,
@@ -23,7 +23,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
-    EXTERNAL_VIDEO_COMPONENT, DOCUMENT_COMPONENT, USER_AGENT_STRING,
+    EXTERNAL_VIDEO_COMPONENT, LINKEDIN_DOCUMENT_COMPONENT, TEXT_OVERLAY_IMAGE_COMPONENT,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
@@ -31,8 +31,6 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers imp
 )
 
 LOGGER = get_logger(__name__)
-
-HEADER = {"User-Agent": USER_AGENT_STRING}
 
 
 def refine_url(url):
@@ -53,7 +51,7 @@ def refine_url(url):
 
 def resolve_url(url_link):
     try:
-        get_response = requests.get(url=url_link, timeout=40, headers=HEADER)
+        get_response = requests.get(url=url_link, timeout=40)
     except (MaxRetryError, SSLError, Timeout, ConnectionError) as e:
         return f"Cant resolve url:{url_link} because of {e}"
     final_url = get_response.url
@@ -77,7 +75,7 @@ def get_article_url(item):
     if action_target_url:
         return resolve_url(action_target_url)
     else:
-        return ""
+        return None
 
 
 def get_url_from_text_content(feed_item):
@@ -90,26 +88,30 @@ def get_url_from_text_content(feed_item):
     return extracted_urls
 
 
+
 def extract_url_from_components(shared_update):
     if CONTENT in shared_update:
         share_update_content = shared_update[CONTENT]
         share_update_content_key = list(share_update_content.keys())
         LOGGER.debug(share_update_content_key)
-        if IMAGE_COMPONENT in share_update_content:
+        if LINKEDIN_IMAGE_COMPONENT in share_update_content:
             url = get_url_from_text_content(feed_item=shared_update)
 
-        elif ARTICLE_COMPONENT in share_update_content:
-            url = get_article_url(item=share_update_content[ARTICLE_COMPONENT])
+        elif LINKEDIN_ARTICLE_COMPONENT in share_update_content:
+            url = get_article_url(item=share_update_content[LINKEDIN_ARTICLE_COMPONENT])
 
         elif LINKEDIN_VIDEO_COMPONENT in share_update_content:
             url = get_url_from_text_content(feed_item=shared_update)
         elif EXTERNAL_VIDEO_COMPONENT in share_update_content:
             url = get_article_url(item=share_update_content[EXTERNAL_VIDEO_COMPONENT])
-        elif DOCUMENT_COMPONENT in share_update_content:
-            url = get_article_url(item=share_update_content[DOCUMENT_COMPONENT])
+        elif LINKEDIN_DOCUMENT_COMPONENT in share_update_content:
+            url = get_url_from_text_content(feed_item=shared_update)
+        elif TEXT_OVERLAY_IMAGE_COMPONENT in share_update_content:
+            url = get_url_from_text_content(feed_item=shared_update)
+
 
         else:
-            pprint(share_update_content)
+            pprint(shared_update)
             raise Exception("Type not defined by Tool")
         shared_url = refine_url(url=url)
         return shared_url
