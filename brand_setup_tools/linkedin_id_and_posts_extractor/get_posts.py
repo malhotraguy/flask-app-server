@@ -23,7 +23,8 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
-    EXTERNAL_VIDEO_COMPONENT, LINKEDIN_DOCUMENT_COMPONENT, TEXT_OVERLAY_IMAGE_COMPONENT,
+    EXTERNAL_VIDEO_COMPONENT, LINKEDIN_DOCUMENT_COMPONENT, TEXT_OVERLAY_IMAGE_COMPONENT, LINKEDIN_POLL_COMPONENT,
+    LINKEDIN_ENTITY_COMPONENT,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
@@ -70,7 +71,7 @@ def url_from_string(string):
     return resolved_urls_list
 
 
-def get_article_url(item):
+def get_url_from_content(item):
     action_target_url = item.get("navigationContext", {}).get("actionTarget")
     if action_target_url:
         return resolve_url(action_target_url)
@@ -78,7 +79,7 @@ def get_article_url(item):
         return None
 
 
-def get_url_from_text_content(feed_item):
+def get_url_from_commentary_text(feed_item):
     string_value = feed_item.get("commentary", {}).get("text", {}).get("text")
     extracted_urls = []
     if string_value:
@@ -95,26 +96,29 @@ def extract_url_from_components(shared_update):
         share_update_content_key = list(share_update_content.keys())
         LOGGER.debug(share_update_content_key)
         if LINKEDIN_IMAGE_COMPONENT in share_update_content:
-            url = get_url_from_text_content(feed_item=shared_update)
+            url = get_url_from_commentary_text(feed_item=shared_update)
 
         elif LINKEDIN_ARTICLE_COMPONENT in share_update_content:
-            url = get_article_url(item=share_update_content[LINKEDIN_ARTICLE_COMPONENT])
+            url = get_url_from_content(item=share_update_content[LINKEDIN_ARTICLE_COMPONENT])
 
         elif LINKEDIN_VIDEO_COMPONENT in share_update_content:
-            url = get_url_from_text_content(feed_item=shared_update)
+            url = get_url_from_commentary_text(feed_item=shared_update)
         elif EXTERNAL_VIDEO_COMPONENT in share_update_content:
-            url = get_article_url(item=share_update_content[EXTERNAL_VIDEO_COMPONENT])
+            url = get_url_from_content(item=share_update_content[EXTERNAL_VIDEO_COMPONENT])
         elif LINKEDIN_DOCUMENT_COMPONENT in share_update_content:
-            url = get_url_from_text_content(feed_item=shared_update)
+            url = get_url_from_commentary_text(feed_item=shared_update)
         elif TEXT_OVERLAY_IMAGE_COMPONENT in share_update_content:
-            url = get_url_from_text_content(feed_item=shared_update)
-
-
+            url = get_url_from_commentary_text(feed_item=shared_update)
+        elif LINKEDIN_POLL_COMPONENT in share_update_content:
+            url = get_url_from_commentary_text(feed_item=shared_update)
+        elif LINKEDIN_ENTITY_COMPONENT in share_update_content:
+            url = get_url_from_content(
+                item=share_update_content[LINKEDIN_ENTITY_COMPONENT]
+            )
         else:
             pprint(shared_update)
             raise Exception("Type not defined by Tool")
-        shared_url = refine_url(url=url)
-        return shared_url
+        return url
 
 
 def get_url(item):
