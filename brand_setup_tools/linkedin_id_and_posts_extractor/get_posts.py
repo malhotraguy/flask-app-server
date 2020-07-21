@@ -132,7 +132,7 @@ def get_url(item):
                 shared_update=shared_update[RESHAREUPDATE]
             )
         else:
-            shared_url = get_url_from_text_content(feed_item=shared_update)
+            shared_url = get_url_from_commentary_text(feed_item=shared_update)
         return shared_url
     else:
         pprint(item)
