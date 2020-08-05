@@ -3,7 +3,7 @@ import sys
 from pprint import pprint
 
 import requests
-from requests.exceptions import SSLError, Timeout
+from requests.exceptions import SSLError, Timeout, ConnectionError
 from urllib3.exceptions import MaxRetryError
 
 from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
