@@ -11,6 +11,7 @@ LINKEDIN_DOCUMENT_COMPONENT = 'com.linkedin.voyager.feed.render.DocumentComponen
 TEXT_OVERLAY_IMAGE_COMPONENT = 'com.linkedin.voyager.feed.render.TextOverlayImageComponent'
 LINKEDIN_ENTITY_COMPONENT = "com.linkedin.voyager.feed.render.EntityComponent"
 LINKEDIN_POLL_COMPONENT = "com.linkedin.voyager.feed.render.PollComponent"
+LINKEDIN_EVENT_COMPONENT = "com.linkedin.voyager.feed.render.EventComponent"
 SHARETEXT = "com.linkedin.voyager.feed.ShareText"
 SHAREFEED = "com.linkedin.voyager.feed.FeedTopic"
 SHAREFEED_HYPERLINK = "com.linkedin.pemberly.text.Hyperlink"

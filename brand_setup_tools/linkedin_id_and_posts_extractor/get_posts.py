@@ -24,7 +24,7 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
     EXTERNAL_VIDEO_COMPONENT, LINKEDIN_DOCUMENT_COMPONENT, TEXT_OVERLAY_IMAGE_COMPONENT, LINKEDIN_POLL_COMPONENT,
-    LINKEDIN_ENTITY_COMPONENT,
+    LINKEDIN_ENTITY_COMPONENT, LINKEDIN_EVENT_COMPONENT,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
@@ -114,6 +114,10 @@ def extract_url_from_components(shared_update):
         elif LINKEDIN_ENTITY_COMPONENT in share_update_content:
             url = get_url_from_content(
                 item=share_update_content[LINKEDIN_ENTITY_COMPONENT]
+            )
+        elif LINKEDIN_EVENT_COMPONENT in share_update_content:
+            url = get_url_from_content(
+                item=share_update_content[LINKEDIN_EVENT_COMPONENT]
             )
         else:
             pprint(shared_update)
