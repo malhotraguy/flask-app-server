@@ -213,8 +213,8 @@ def id_html_table():
     )
 
 
-@app.route("/id_json", methods=("POST", "GET"))
-def id_html_table():
+@app.route("/ids_json", methods=("POST", "GET"))
+def ids_json_response():
     try:
         linkedin_object = get_linkedin_object()
     except Exception as e:
