@@ -213,6 +213,19 @@ def id_html_table():
     )
 
 
+@app.route("/id_json", methods=("POST", "GET"))
+def id_html_table():
+    try:
+        linkedin_object = get_linkedin_object()
+    except Exception as e:
+        return render_template("public/error.html", error=e)
+    company_identifier = request.args.get("company")
+    company = get_company_name(input_string=company_identifier)
+    df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
+    ids_json = df_ids.to_json(orient="records")
+    return ids_json
+
+
 @app.route("/posts", methods=("POST", "GET"))
 def posts_html_table():
     start_time = datetime.now()
