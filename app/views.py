@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 import pandas as pd
-from flask import request, render_template, redirect, flash, url_for, abort, send_file, jsonify
+from flask import request, render_template, redirect, flash, url_for, abort, send_file
 from flask_cors import CORS
 
 from app import app
@@ -223,7 +223,7 @@ def ids_json_response():
     company = get_company_name(input_string=company_identifier)
     df_ids = get_linkedin_id(company_name=company, linkedin_object=linkedin_object)
     ids_json = df_ids.to_json(orient="records")
-    return jsonify(ids_json)
+    return ids_json
 
 
 @app.route("/posts", methods=("POST", "GET"))
