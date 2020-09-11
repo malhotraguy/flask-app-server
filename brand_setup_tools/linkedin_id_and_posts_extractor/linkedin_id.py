@@ -29,17 +29,17 @@ def get_company_info(company_detail):
     linkedin_url = company_detail.get(URL)
     headquarter = company_detail.get(HEADQUARTER, {}).get(CITY)
     company_url = company_detail.get(COMPANY_PAGE_URL)
-    print(f"Universal Name= {company_urn}")
-    print(f"URN ID= {urn_id}")
-    print(f"Linkedin url= {linkedin_url}")
-    print(f"Company Page Url= {company_url}")
-    print(f"Headquarter= {headquarter}")
+    print(f"universal_name= {company_urn}")
+    print(f"urn_id= {urn_id}")
+    print(f"linkedin_url= {linkedin_url}")
+    print(f"company_page_url= {company_url}")
+    print(f"headquarter= {headquarter}")
     company_info = {
-        "Universal Name": company_urn,
-        "URN ID": urn_id,
-        "Linkedin Url": linkedin_url,
-        "Company Page Url": company_url,
-        "Headquarter": headquarter,
+        "universal_name": company_urn,
+        "urn_id": urn_id,
+        "linkedin_url": linkedin_url,
+        "company_page_url": company_url,
+        "headquarter": headquarter,
     }
     return company_info
 
