@@ -23,12 +23,18 @@ from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     EXIT,
     POSTS_MAX_RESULT,
     RESHAREUPDATE,
-    EXTERNAL_VIDEO_COMPONENT, LINKEDIN_DOCUMENT_COMPONENT, TEXT_OVERLAY_IMAGE_COMPONENT, LINKEDIN_POLL_COMPONENT,
-    LINKEDIN_ENTITY_COMPONENT, LINKEDIN_EVENT_COMPONENT,
+    EXTERNAL_VIDEO_COMPONENT,
+    LINKEDIN_DOCUMENT_COMPONENT,
+    TEXT_OVERLAY_IMAGE_COMPONENT,
+    LINKEDIN_POLL_COMPONENT,
+    LINKEDIN_ENTITY_COMPONENT,
+    LINKEDIN_EVENT_COMPONENT,
+    LINKEDIN_CELEBRATION_COMPONENT,
 )
 from brand_setup_tools.linkedin_id_and_posts_extractor.linkedin_tool_helpers import (
     get_linkedin_object,
-    get_company_name, get_logger,
+    get_company_name,
+    get_logger,
 )
 
 LOGGER = get_logger(__name__)
@@ -89,7 +95,6 @@ def get_url_from_commentary_text(feed_item):
     return extracted_urls
 
 
-
 def extract_url_from_components(shared_update):
     if CONTENT in shared_update:
         share_update_content = shared_update[CONTENT]
@@ -99,12 +104,16 @@ def extract_url_from_components(shared_update):
             url = get_url_from_commentary_text(feed_item=shared_update)
 
         elif LINKEDIN_ARTICLE_COMPONENT in share_update_content:
-            url = get_url_from_content(item=share_update_content[LINKEDIN_ARTICLE_COMPONENT])
+            url = get_url_from_content(
+                item=share_update_content[LINKEDIN_ARTICLE_COMPONENT]
+            )
 
         elif LINKEDIN_VIDEO_COMPONENT in share_update_content:
             url = get_url_from_commentary_text(feed_item=shared_update)
         elif EXTERNAL_VIDEO_COMPONENT in share_update_content:
-            url = get_url_from_content(item=share_update_content[EXTERNAL_VIDEO_COMPONENT])
+            url = get_url_from_content(
+                item=share_update_content[EXTERNAL_VIDEO_COMPONENT]
+            )
         elif LINKEDIN_DOCUMENT_COMPONENT in share_update_content:
             url = get_url_from_commentary_text(feed_item=shared_update)
         elif TEXT_OVERLAY_IMAGE_COMPONENT in share_update_content:
@@ -119,6 +128,8 @@ def extract_url_from_components(shared_update):
             url = get_url_from_content(
                 item=share_update_content[LINKEDIN_EVENT_COMPONENT]
             )
+        elif LINKEDIN_CELEBRATION_COMPONENT in share_update_content:
+            url = get_url_from_commentary_text(feed_item=shared_update)
         else:
             pprint(shared_update)
             raise Exception("Type not defined by Tool")
@@ -147,9 +158,9 @@ def get_post_link_and_social_activity(item):
     linkedin_post_link = item.get(PERMALINK)
     total_social_activity_counts = (
         item.get(VALUE, {})
-            .get(SHAREUPDATE, {})
-            .get(SOCIAL_DETAIL, {})
-            .get(SOCIAL_COUNTS, {})
+        .get(SHAREUPDATE, {})
+        .get(SOCIAL_DETAIL, {})
+        .get(SOCIAL_COUNTS, {})
     )
     likes = total_social_activity_counts.get(NUM_LIKES)
     return linkedin_post_link, likes

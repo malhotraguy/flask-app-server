@@ -5,13 +5,16 @@ COMPANY_URL_INITIAL = "https://www.linkedin.com/company/"
 SHAREUPDATE = "com.linkedin.voyager.feed.render.UpdateV2"
 LINKEDIN_IMAGE_COMPONENT = "com.linkedin.voyager.feed.render.ImageComponent"
 LINKEDIN_ARTICLE_COMPONENT = "com.linkedin.voyager.feed.render.ArticleComponent"
-LINKEDIN_VIDEO_COMPONENT = 'com.linkedin.voyager.feed.render.LinkedInVideoComponent'
+LINKEDIN_VIDEO_COMPONENT = "com.linkedin.voyager.feed.render.LinkedInVideoComponent"
 EXTERNAL_VIDEO_COMPONENT = "com.linkedin.voyager.feed.render.ExternalVideoComponent"
-LINKEDIN_DOCUMENT_COMPONENT = 'com.linkedin.voyager.feed.render.DocumentComponent'
-TEXT_OVERLAY_IMAGE_COMPONENT = 'com.linkedin.voyager.feed.render.TextOverlayImageComponent'
+LINKEDIN_DOCUMENT_COMPONENT = "com.linkedin.voyager.feed.render.DocumentComponent"
+TEXT_OVERLAY_IMAGE_COMPONENT = (
+    "com.linkedin.voyager.feed.render.TextOverlayImageComponent"
+)
 LINKEDIN_ENTITY_COMPONENT = "com.linkedin.voyager.feed.render.EntityComponent"
 LINKEDIN_POLL_COMPONENT = "com.linkedin.voyager.feed.render.PollComponent"
 LINKEDIN_EVENT_COMPONENT = "com.linkedin.voyager.feed.render.EventComponent"
+LINKEDIN_CELEBRATION_COMPONENT = "com.linkedin.voyager.feed.render.CelebrationComponent"
 SHARETEXT = "com.linkedin.voyager.feed.ShareText"
 SHAREFEED = "com.linkedin.voyager.feed.FeedTopic"
 SHAREFEED_HYPERLINK = "com.linkedin.pemberly.text.Hyperlink"
@@ -47,4 +50,3 @@ CLEAR = "clear"
 DONE = "done"
 POSTS_MAX_RESULT = 500
 USER_AGENT_STRING = "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4"
-
