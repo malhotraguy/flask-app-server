@@ -3,6 +3,7 @@ import logging
 import os
 
 from linkedin_api import Linkedin  # https://github.com/tomquirk/linkedin-api
+from linkedin_api.client import ChallengeException
 
 from brand_setup_tools.linkedin_id_and_posts_extractor.constants import (
     COMPANY_URL_INITIAL,
@@ -35,6 +36,9 @@ def get_logger(name):
     return logger
 
 
+LOGGER = get_logger(__name__)
+
+
 def get_key(filepath=f"{FILE_DIRECTORY}/credentials.json"):
     if os.path.isfile(filepath):
         credentials = json.load(open(filepath, "r"))
@@ -54,7 +58,17 @@ def get_company_name(input_string):
 def get_linkedin_object():
     username, password = get_key()
     # Authenticate using any Linkedin account credentials
-    linkedin_object = Linkedin(
-        username=username, password=password, refresh_cookies=True
-    )
+    try:
+        LOGGER.debug("Authenticating the Linkedin Client Object using cached cookies")
+        linkedin_object = Linkedin(
+            username=username, password=password, refresh_cookies=False
+        )
+    except ChallengeException:
+        LOGGER.debug(
+            "Authenticating the Linkedin Client Object after refreshing cookies"
+        )
+        linkedin_object = Linkedin(
+            username=username, password=password, refresh_cookies=True
+        )
+
     return linkedin_object
