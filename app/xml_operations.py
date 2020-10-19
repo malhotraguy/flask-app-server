@@ -13,27 +13,18 @@ from flask import flash
 defuse_stdlib()  # Calling defusedxml.defuse_stdlib to patch known xml security vulnerabilities
 
 
-def get_logger(name):
+def get_logger(module_name):
     """
     Function to initialize the logger
-    :param name: Name of the module in which logger has to be initialized
+    :param module_name: Name of the module in which logger has to be initialized
     :return:
     """
     # Gets or creates a logger
-    logger = logging.getLogger(name)
-
+    logging.basicConfig(format="%(levelname)s-[%(filename)s:%(lineno)d]:%(message)s")
+    logger = logging.getLogger(module_name)
     # set log level
     logger.setLevel(logging.DEBUG)
 
-    # define  handler and set formatter
-    stream_handler = logging.StreamHandler()
-    formatter = logging.Formatter(
-        "%(asctime)s:%(levelname)s-[%(filename)s:%(lineno)d]:%(message)s"
-    )
-    stream_handler.setFormatter(formatter)
-
-    # add file handler to logger
-    logger.addHandler(stream_handler)
     return logger
 
 
